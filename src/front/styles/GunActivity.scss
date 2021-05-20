@@ -1,0 +1,44 @@
+h1, h2 {
+    margin-top: 2rem;
+}
+
+h2 {
+    font-size: 1.7rem;
+}
+
+// Mini Jumbotron component styles
+.miniJumbo {
+    max-height: 400px;
+    object-fit: cover;
+}
+
+// Gun Activity styles
+.activity-paragraph {
+    width: 700px;
+}
+
+// Custom List component styles
+.recommended-row {
+    background-color: #C5BBA8;
+    margin-top: 2vh;
+}
+
+.recommended-row .col:not(:last-child) {
+    border-right: 1px solid black;
+}
+
+.recommended-row .col:last-child {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+    text-align: center;
+    width: 0.5rem;
+    flex-grow: 0;
+    background-color: #fff;
+}
+
+.custom-thumbnail {
+    border: none;
+    background-color: transparent;
+}
