@@ -6,9 +6,6 @@ import gunImg from "../../img/hunt.jpeg";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-// FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTimes } from "@fortawesome/free-solid-svg-icons";
 import Image from "react-bootstrap/Image";
 // Stylesheet
 import "../../styles/GunActivity.scss";
@@ -24,9 +21,7 @@ export const CustomList = props => {
 				<Col>Name</Col>
 				<Col>Stats</Col>
 				<Col>Stats</Col>
-				<Col>
-					<FontAwesomeIcon icon={faTimes} />
-				</Col>
+				<Col>Stats</Col>
 			</Row>
 			<Row className="recommended-row">
 				<Col className="p-0">
@@ -35,9 +30,7 @@ export const CustomList = props => {
 				<Col>Name</Col>
 				<Col>Stats</Col>
 				<Col>Stats</Col>
-				<Col>
-					<FontAwesomeIcon icon={faTimes} />
-				</Col>
+				<Col>Stats</Col>
 			</Row>
 			<Row className="recommended-row">
 				<Col className="p-0">
@@ -46,9 +39,7 @@ export const CustomList = props => {
 				<Col>Name</Col>
 				<Col>Stats</Col>
 				<Col>Stats</Col>
-				<Col>
-					<FontAwesomeIcon icon={faTimes} />
-				</Col>
+				<Col>Stats</Col>
 			</Row>
 			<Row className="recommended-row">
 				<Col className="p-0">
@@ -57,9 +48,7 @@ export const CustomList = props => {
 				<Col>Name</Col>
 				<Col>Stats</Col>
 				<Col>Stats</Col>
-				<Col>
-					<FontAwesomeIcon icon={faTimes} />
-				</Col>
+				<Col>Stats</Col>
 			</Row>
 			<Row className="recommended-row">
 				<Col className="p-0">
@@ -68,9 +57,7 @@ export const CustomList = props => {
 				<Col>Name</Col>
 				<Col>Stats</Col>
 				<Col>Stats</Col>
-				<Col>
-					<FontAwesomeIcon icon={faTimes} />
-				</Col>
+				<Col>Stats</Col>
 			</Row>
 		</Container>
 	);

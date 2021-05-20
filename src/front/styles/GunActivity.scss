@@ -27,17 +27,6 @@ h2 {
     border-right: 1px solid black;
 }
 
-.recommended-row .col:last-child {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 2rem;
-    text-align: center;
-    width: 0.5rem;
-    flex-grow: 0;
-    background-color: #fff;
-}
-
 .custom-thumbnail {
     border: none;
     background-color: transparent;

@@ -5,6 +5,7 @@ import ScrollToTop from "./component/scrollToTop";
 import { LandingPage } from "./pages/landingPage";
 import { Demo } from "./pages/demo";
 import { GunActivity } from "./pages/GunActivity";
+import { GunDetails } from "./pages/GunDetails";
 import injectContext from "./store/appContext";
 
 import { MyNavbar } from "./component/navbar";
@@ -30,6 +31,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/activity">
 							<GunActivity />
+						</Route>
+						<Route exact path="/gun">
+							<GunDetails />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
