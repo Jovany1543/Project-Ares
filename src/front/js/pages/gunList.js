@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import { ListGroup, Item, Navbar, Brand, Container, Row, Col } from "react-bootstrap";
+import { ListGroup, Navbar, Brand, Container, Row, Col, Pagination } from "react-bootstrap";
 import "../../styles/gunList.scss";
 
 export const GunList = () => {
@@ -10,7 +10,26 @@ export const GunList = () => {
 		<div className="text-center mt-5">
 			<Container>
 				<Navbar expand="lg" variant="dark" bg="dark">
-					<Navbar.Brand href="#">Navbar</Navbar.Brand>
+					<Navbar.Brand href="#" className="mr-auto">
+						Gun Category
+					</Navbar.Brand>
+					<Pagination className="ml-auto pr-2">
+						<Pagination.First />
+						<Pagination.Prev />
+						<Pagination.Item>{1}</Pagination.Item>
+						<Pagination.Ellipsis />
+
+						<Pagination.Item>{10}</Pagination.Item>
+						<Pagination.Item>{11}</Pagination.Item>
+						<Pagination.Item active>{12}</Pagination.Item>
+						<Pagination.Item>{13}</Pagination.Item>
+						<Pagination.Item disabled>{14}</Pagination.Item>
+
+						<Pagination.Ellipsis />
+						<Pagination.Item>{20}</Pagination.Item>
+						<Pagination.Next />
+						<Pagination.Last />
+					</Pagination>
 				</Navbar>
 
 				<ListGroup variant="flush">
