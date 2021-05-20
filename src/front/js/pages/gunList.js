@@ -1,24 +1,105 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
-import "../../styles/home.scss";
+import { ListGroup, Item, Navbar, Brand, Container, Row, Col } from "react-bootstrap";
+import "../../styles/gunList.scss";
 
-export const LandingPage = () => {
+export const GunList = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
 		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-					Read documentation
-				</a>
-			</p>
+			<Container>
+				<Navbar expand="lg" variant="dark" bg="dark">
+					<Navbar.Brand href="#">Navbar</Navbar.Brand>
+				</Navbar>
+
+				<ListGroup variant="flush">
+					<ListGroup.Item>
+						<Row>
+							<Col>
+								<img
+									className="d-block w-55"
+									src="https://via.placeholder.com/100"
+									alt="Second slide"
+								/>
+							</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+						</Row>
+					</ListGroup.Item>
+					<ListGroup.Item>
+						<Row>
+							<Col>
+								<img
+									className="d-block w-55"
+									src="https://via.placeholder.com/100"
+									alt="Second slide"
+								/>
+							</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+						</Row>
+					</ListGroup.Item>
+					<ListGroup.Item>
+						<Row>
+							<Col>
+								<img
+									className="d-block w-55"
+									src="https://via.placeholder.com/100"
+									alt="Second slide"
+								/>
+							</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+						</Row>
+					</ListGroup.Item>
+					<ListGroup.Item>
+						<Row>
+							<Col>
+								<img
+									className="d-block w-55"
+									src="https://via.placeholder.com/100"
+									alt="Second slide"
+								/>
+							</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+						</Row>
+					</ListGroup.Item>
+					<ListGroup.Item>
+						<Row>
+							<Col>
+								<img
+									className="d-block w-55"
+									src="https://via.placeholder.com/100"
+									alt="Second slide"
+								/>
+							</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+						</Row>
+					</ListGroup.Item>
+					<ListGroup.Item>
+						<Row>
+							<Col>
+								<img
+									className="d-block w-55"
+									src="https://via.placeholder.com/100"
+									alt="Second slide"
+								/>
+							</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+							<Col>Stats</Col>
+						</Row>
+					</ListGroup.Item>
+				</ListGroup>
+			</Container>
 		</div>
 	);
 };

@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { LandingPage } from "./pages/landingPage";
+import { GunList } from "./pages/gunList";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import injectContext from "./store/appContext";
@@ -25,8 +26,8 @@ const Layout = () => {
 						<Route exact path="/">
 							<LandingPage />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/gunlist">
+							<GunList />
 						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
