@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
 
 import { LandingPage } from "./pages/landingPage";
+import { GunList } from "./pages/gunList";
 import { Demo } from "./pages/demo";
 import { GunActivity } from "./pages/GunActivity";
 import { GunDetails } from "./pages/GunDetails";
@@ -26,8 +27,8 @@ const Layout = () => {
 						<Route exact path="/">
 							<LandingPage />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
+						<Route exact path="/gunlist">
+							<GunList />
 						</Route>
 						<Route exact path="/activity">
 							<GunActivity />

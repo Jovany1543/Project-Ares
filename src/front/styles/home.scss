@@ -1,0 +1,14 @@
+.content{
+    background-color: #4d4d4d;
+    &.carousel{
+        min-height: 150px;
+        .carousel-item img{
+            height: 300px;
+            object-fit: cover;
+        }
+    }
+}
+
+h4{
+    text-align: center;
+}
