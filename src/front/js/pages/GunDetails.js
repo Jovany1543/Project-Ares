@@ -12,8 +12,8 @@ import gunImg from "../../img/hunt.jpeg";
 import Image from "react-bootstrap/Image";
 
 // FontAwesome
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 export const GunDetails = () => {
 	const { store, actions } = useContext(Context);
@@ -30,7 +30,6 @@ export const GunDetails = () => {
 				similique dolore vero repudiandae eligendi voluptatibus quis dolorem! Illo eos rem hic quae nemo id
 				perferendis totam, vero at eaque pariatur, numquam adipisci laudantium.
 			</p>
-			<FontAwesomeIcon icon="faStar" />
 		</>
 	);
 };
