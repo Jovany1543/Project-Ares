@@ -13,6 +13,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
+			],
+			gunData: [
+				{
+					name: "Glock 19",
+					type: "handgun",
+					id: "1"
+				},
+				{
+					name: "S&W AR-15",
+					type: "rifle",
+					id: "2"
+				},
+				{
+					name: "Peacemaker",
+					type: "shotgun",
+					id: "3"
+				}
 			]
 		},
 		actions: {
