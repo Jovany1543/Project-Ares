@@ -11,6 +11,7 @@ import "../../styles/GunDetails.scss";
 // Bootstrap
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
+import Table from "react-bootstrap/Table";
 
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -34,6 +35,31 @@ export const GunDetails = () => {
 				similique dolore vero repudiandae eligendi voluptatibus quis dolorem! Illo eos rem hic quae nemo id
 				perferendis totam, vero at eaque pariatur, numquam adipisci laudantium.
 			</p>
+			<h3 className="text-center">Specs</h3>
+			<Table striped bordered hover>
+				<tbody>
+					<tr>
+						<th>Item</th>
+						<td>Gun</td>
+					</tr>
+					<tr>
+						<th>Item</th>
+						<td>Gun</td>
+					</tr>
+					<tr>
+						<th>Item</th>
+						<td>Gun</td>
+					</tr>
+					<tr>
+						<th>Item</th>
+						<td>Gun</td>
+					</tr>
+					<tr>
+						<th>Item</th>
+						<td>Gun</td>
+					</tr>
+				</tbody>
+			</Table>
 		</Container>
 	);
 };
