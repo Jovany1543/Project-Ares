@@ -41,7 +41,26 @@ export const GunList = () => {
 						</Pagination>
 					</Navbar>
 					<ListGroup variant="flush">
-						<ListGroup.Item>
+						{store.gunData.map((item, index) => {
+							return (
+								<ListGroup.Item key={index}>
+									<Row>
+										<Col>
+											<img
+												className="d-block w-55"
+												src="https://via.placeholder.com/100"
+												alt="Second slide"
+											/>
+										</Col>
+										<Col>{item.name}</Col>
+										<Col>Stats</Col>
+										<Col>Stats</Col>
+									</Row>
+								</ListGroup.Item>
+							);
+						})}
+
+						{/* <ListGroup.Item>
 							<Row>
 								<Col>
 									<img
@@ -110,21 +129,7 @@ export const GunList = () => {
 								<Col>Stats</Col>
 								<Col>Stats</Col>
 							</Row>
-						</ListGroup.Item>
-						<ListGroup.Item>
-							<Row>
-								<Col>
-									<img
-										className="d-block w-55"
-										src="https://via.placeholder.com/100"
-										alt="Second slide"
-									/>
-								</Col>
-								<Col>Stats</Col>
-								<Col>Stats</Col>
-								<Col>Stats</Col>
-							</Row>
-						</ListGroup.Item>
+						</ListGroup.Item> */}
 					</ListGroup>
 				</Col>
 			</Row>
