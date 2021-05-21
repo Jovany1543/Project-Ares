@@ -1,0 +1,29 @@
+.bg-color{
+    background-color: #C5BBA8;
+}
+
+.top-spacing-80{
+    padding-top: 50px;
+    margin-top: 30px;
+}
+.top-spacing-20{
+    padding-top: 20px;
+}
+.filters-header{
+    background-color: #343a40;
+    color: white;
+    margin-bottom: 0px ;
+    padding-bottom: 0px ;
+
+}
+
+.filters-listgroup{
+    padding-top: 0px;
+    margin-top: 0px;
+}
+
+
+
+.gunList-row .col:not(:last-child) {
+    border-right: 1px solid black;
+}
