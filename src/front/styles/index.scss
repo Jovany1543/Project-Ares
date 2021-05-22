@@ -1,3 +1,14 @@
 /* 
     General Styles
 */
+
+.btn-primary {
+    background-color: gold;
+    border-color: goldenrod;
+    color: black;
+    &:hover{
+        background: goldenrod;
+        border-color: gold;
+        color: white;
+    }
+}

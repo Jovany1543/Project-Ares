@@ -20,13 +20,19 @@ export const LandingPage = () => {
 				<h4> Guns by Category</h4>
 				<Row>
 					<Col>
-						<img className="d-block w-100" src="https://via.placeholder.com/150" alt="Second slide" />
+						<Container className="handguncat ">
+							<h1>Handguns</h1>
+						</Container>
 					</Col>
 					<Col>
-						<img className="d-block w-100" src="https://via.placeholder.com/150" alt="Second slide" />
+						<Container className="riflescat">
+							<h1>Rifles</h1>
+						</Container>
 					</Col>
 					<Col>
-						<img className="d-block w-100" src="https://via.placeholder.com/150" alt="Second slide" />
+						<Container className="shotgunscat">
+							<h1>Shotguns</h1>
+						</Container>
 					</Col>
 				</Row>
 			</Container>

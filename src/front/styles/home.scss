@@ -12,3 +12,33 @@
 h4{
     text-align: center;
 }
+
+.jumbotron {
+  background-image: url("../img/firearm.jpeg");
+  background-size: cover;
+}
+.handguncat, .riflescat, .shotgunscat{
+    height: 300px ;
+    background-size: cover;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1{
+        color: black;
+        text-shadow:1px 0 0 white,0 1px 0 white,-1px 0 0 white,0 -1px 0 white;
+    }
+}
+.handguncat {
+  background-image: url("../img/handgun.jpeg");
+
+}
+
+.riflescat{
+  background-image: url("../img/rifle.jpeg");
+  
+}
+
+.shotgunscat {
+  background-image: url("../img/shotgun.jpeg");
+  
+}
