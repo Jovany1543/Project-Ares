@@ -16,29 +16,36 @@ h4{
 .jumbotron {
   background-image: url("../img/firearm.jpeg");
   background-size: cover;
+  .container{
+      color: white;
+      background-color: black;
+        opacity: .7;
+  }
 }
-.handguncat, .riflescat, .shotgunscat{
+.handgunscat, .riflescat, .shotgunscat{
     height: 300px ;
     background-size: cover;
     display: flex;
     align-items: center;
     justify-content: center;
+    
+    
     h1{
-        color: black;
-        text-shadow:1px 0 0 white,0 1px 0 white,-1px 0 0 white,0 -1px 0 white;
+        position: absolute;
+        color: white;
+        text-shadow:1px 0 0 black,0 1px 0 black,-1px 0 0 black,0 -1px 0 black;
+        background-color: black;
+        opacity: .7;
+        width: 300px;
+        
+        text-align: center;
+
+        
+        
     }
-}
-.handguncat {
-  background-image: url("../img/handgun.jpeg");
-
-}
-
-.riflescat{
-  background-image: url("../img/rifle.jpeg");
-  
-}
-
-.shotgunscat {
-  background-image: url("../img/shotgun.jpeg");
-  
+    img{
+        height: 300px;
+        width: 300px;
+            object-fit: cover
+    }
 }
