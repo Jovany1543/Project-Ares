@@ -1,0 +1,17 @@
+.nav-colors{
+    background-color: #A08F6E ;
+    border-bottom: 1px solid #4d4d4d
+}
+
+.search {
+    input[type="text"]{
+        border-radius: 10px 0 0 10px;
+    }
+    button{
+        border-radius: 4px 10px 10px 4px;
+    }
+}
+
+.navbar-toggler{
+border: 0px solid transparent;
+}
