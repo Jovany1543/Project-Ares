@@ -4,8 +4,26 @@
         min-height: 150px;
         .carousel-item img{
             height: 300px;
+            width: 300px;
             object-fit: cover;
         }
+        .col{
+             display: flex;
+    align-items: center;
+    justify-content: center;
+    
+        
+            h1{
+        position: absolute;
+        color: white;
+        text-shadow:1px 0 0 black,0 1px 0 black,-1px 0 0 black,0 -1px 0 black;
+        background-color: black;
+        opacity: .7;
+        width: 300px;
+        text-align: center;        
+    }
+        }
+         
     }
 }
 

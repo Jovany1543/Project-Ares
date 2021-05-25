@@ -56,23 +56,6 @@ export const GunList = () => {
 						<Navbar.Brand href="#" className="mr-auto">
 							Gun Category
 						</Navbar.Brand>
-						<Pagination className="ml-auto pr-2">
-							<Pagination.First />
-							<Pagination.Prev />
-							<Pagination.Item>{1}</Pagination.Item>
-							<Pagination.Ellipsis />
-
-							<Pagination.Item>{10}</Pagination.Item>
-							<Pagination.Item>{11}</Pagination.Item>
-							<Pagination.Item active>{12}</Pagination.Item>
-							<Pagination.Item>{13}</Pagination.Item>
-							<Pagination.Item disabled>{14}</Pagination.Item>
-
-							<Pagination.Ellipsis />
-							<Pagination.Item>{20}</Pagination.Item>
-							<Pagination.Next />
-							<Pagination.Last />
-						</Pagination>
 					</Navbar>
 					<ListGroup variant="flush">
 						{store.gunData.map((item, index) => {
@@ -94,6 +77,24 @@ export const GunList = () => {
 							);
 						})}
 					</ListGroup>
+
+					<Pagination className="ml-auto pr-2">
+						<Pagination.First />
+						<Pagination.Prev />
+						<Pagination.Item>{1}</Pagination.Item>
+						<Pagination.Ellipsis />
+
+						<Pagination.Item>{10}</Pagination.Item>
+						<Pagination.Item>{11}</Pagination.Item>
+						<Pagination.Item active>{12}</Pagination.Item>
+						<Pagination.Item>{13}</Pagination.Item>
+						<Pagination.Item disabled>{14}</Pagination.Item>
+
+						<Pagination.Ellipsis />
+						<Pagination.Item>{20}</Pagination.Item>
+						<Pagination.Next />
+						<Pagination.Last />
+					</Pagination>
 				</Col>
 			</Row>
 		</div>
