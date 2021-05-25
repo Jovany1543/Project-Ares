@@ -1,20 +1,19 @@
 import React from "react";
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button } from "react-bootstrap";
+import { Navbar, Nav, NavDropdown, Form, FormControl, Button, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import "../../styles/navbar.scss";
 
 export const MyNavbar = () => {
 	return (
-		<Navbar bg="light" expand="false">
+		<Navbar className="nav-colors" expand="false">
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			<Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+			<Navbar.Brand className="mr-auto" href="#home">
+				Guniverse
+			</Navbar.Brand>
 
-			<Form inline className="ml-auto pr-5">
-				<FormControl type="text" placeholder="Search" className="mr-sm-2" />
-				<Button variant="outline-success">Search</Button>
-			</Form>
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
-					<Nav.Link href="#home">Home</Nav.Link>
+					<Nav.Link href="#Home">Home</Nav.Link>
 					<Nav.Link href="#link">Link</Nav.Link>
 					<NavDropdown title="Dropdown" id="basic-nav-dropdown">
 						<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -25,6 +24,15 @@ export const MyNavbar = () => {
 					</NavDropdown>
 				</Nav>
 			</Navbar.Collapse>
+
+			<Form inline className="py-0 pl-0 pr-5 search">
+				<InputGroup className="mb-3">
+					<FormControl type="text" placeholder="Enter your query" className="" />
+					<InputGroup.Append>
+						<Button variant="primary">Search</Button>
+					</InputGroup.Append>
+				</InputGroup>
+			</Form>
 		</Navbar>
 	);
 };
