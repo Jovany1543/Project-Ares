@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Context } from "../store/appContext";
 import gunImg from "../../img/hunt.jpeg";
 
@@ -36,28 +36,16 @@ export const GunDetails = () => {
 				perferendis totam, vero at eaque pariatur, numquam adipisci laudantium.
 			</p>
 			<h3 className="text-center">Specs</h3>
-			<Table striped bordered hover>
+			<Table bordered hover>
 				<tbody>
-					<tr>
-						<th>Item</th>
-						<td>Gun</td>
-					</tr>
-					<tr>
-						<th>Item</th>
-						<td>Gun</td>
-					</tr>
-					<tr>
-						<th>Item</th>
-						<td>Gun</td>
-					</tr>
-					<tr>
-						<th>Item</th>
-						<td>Gun</td>
-					</tr>
-					<tr>
-						<th>Item</th>
-						<td>Gun</td>
-					</tr>
+					{store.gunData.map((item, index) => {
+						return (
+							<tr key={index}>
+								<th>{item.name}</th>
+								<td>{item.type}</td>
+							</tr>
+						);
+					})}
 				</tbody>
 			</Table>
 		</Container>
