@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export const Signup = () => {
 	return (
@@ -58,7 +59,7 @@ export const Signup = () => {
 										placeholder="Confirm Password"
 									/>
 								</div>
-								<div className="row my-4 align-items-center">
+								<div className="row my-4 align-items-center pt-4">
 									<input type="checkbox" name="remember_me" id="remember_me" className="mr-1" />
 									<label className="text-black-50 mb-0" htmlFor="remember_me">
 										Remember Me
@@ -75,7 +76,7 @@ export const Signup = () => {
 						</div>
 						<div className="row justify-content-center">
 							<p>
-								Have an account? <a href="#">Log in here</a>
+								Have an account? <Link to="/login">Log in here</Link>
 							</p>
 						</div>
 					</div>
