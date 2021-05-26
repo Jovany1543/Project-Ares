@@ -4,6 +4,7 @@ import ScrollToTop from "./component/scrollToTop";
 // Pages
 import { LandingPage } from "./pages/landingPage";
 import { Login } from "./pages/login";
+import { Signup } from "./pages/signup";
 import { GunList } from "./pages/gunList";
 import { Demo } from "./pages/demo";
 import { GunActivity } from "./pages/GunActivity";
@@ -30,6 +31,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/login">
 							<Login />
+						</Route>
+						<Route exact path="/signup">
+							<Signup />
 						</Route>
 						<Route exact path="/gunlist">
 							<GunList />
