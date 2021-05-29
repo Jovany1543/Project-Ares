@@ -34,6 +34,7 @@ export const Bookmarks = props => {
 						<ListGroup.Item key={index} className="bg-color">
 							<Row className="gunList-row">
 								<Col>
+									<Form.Check inline label="1" name="group1" type={type} id={`inline-${type}-1`} />
 									<img
 										className="d-block w-55"
 										src="https://via.placeholder.com/100"

@@ -16,19 +16,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			gunData: [
 				{
-					name: "Glock 19",
-					type: "handgun",
-					id: "1"
+					id: "1",
+					name: "Glock 19M",
+					manufacturer: "Glock",
+					caliber: "9mm",
+					barrelLength: '4.02"',
+					capacity: "15+1",
+					category: "handgun",
+					type: "semi-auto",
+					weight: "24.83 oz"
 				},
 				{
-					name: "S&W AR-15",
-					type: "rifle",
-					id: "2"
+					id: "2",
+					name: "Glock 17",
+					manufacturer: "Glock",
+					caliber: "9mm",
+					barrelLength: '4.49"',
+					capacity: "17+1",
+					category: "handgun",
+					type: "semi-auto",
+					weight: "22.04 oz"
 				},
 				{
-					name: "Peacemaker",
-					type: "shotgun",
-					id: "3"
+					id: "1",
+					name: "Baretta 92 FS",
+					manufacturer: "Glock",
+					caliber: "9mm",
+					barrelLength: '4.02"',
+					capacity: "10",
+					category: "handgun",
+					type: "semi-auto",
+					weight: "24.83 oz"
 				}
 			]
 		},

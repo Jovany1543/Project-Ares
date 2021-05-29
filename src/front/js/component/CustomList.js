@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
+import { Context } from "../store/appContext";
 import gunImg from "../../img/hunt.jpeg";
 
 // Bootstrap
@@ -11,54 +12,59 @@ import Image from "react-bootstrap/Image";
 import "../../styles/GunActivity.scss";
 
 export const CustomList = props => {
+	const { store, actions } = useContext(Context);
 	return (
 		<Container>
 			<h2>{props.title}</h2>
-			<Row className="recommended-row">
-				<Col className="p-0">
-					<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
-				</Col>
-				<Col>Name</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-			</Row>
-			<Row className="recommended-row">
-				<Col className="p-0">
-					<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
-				</Col>
-				<Col>Name</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-			</Row>
-			<Row className="recommended-row">
-				<Col className="p-0">
-					<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
-				</Col>
-				<Col>Name</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-			</Row>
-			<Row className="recommended-row">
-				<Col className="p-0">
-					<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
-				</Col>
-				<Col>Name</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-			</Row>
-			<Row className="recommended-row">
-				<Col className="p-0">
-					<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
-				</Col>
-				<Col>Name</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-				<Col>Stats</Col>
-			</Row>
+			{store.gunData.map((item, index) => {
+				return (
+					<Row key={index} className="recommended-row">
+						<Col className="p-0">
+							<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
+						</Col>
+						<Col>{item.name}</Col>
+						<Col>{item.type}</Col>
+						<Col>Stats</Col>
+						<Col>Stats</Col>
+					</Row>
+					/* <Row className="recommended-row">
+						<Col className="p-0">
+							<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
+						</Col>
+						<Col>Name</Col>
+						<Col>Stats</Col>
+						<Col>Stats</Col>
+						<Col>Stats</Col>
+					</Row>
+					<Row className="recommended-row">
+						<Col className="p-0">
+							<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
+						</Col>
+						<Col>Name</Col>
+						<Col>Stats</Col>
+						<Col>Stats</Col>
+						<Col>Stats</Col>
+					</Row>
+					<Row className="recommended-row">
+						<Col className="p-0">
+							<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
+						</Col>
+						<Col>Name</Col>
+						<Col>Stats</Col>
+						<Col>Stats</Col>
+						<Col>Stats</Col>
+					</Row>
+					<Row className="recommended-row">
+						<Col className="p-0">
+							<Image className="custom-thumbnail p-0" src={gunImg} thumbnail />
+						</Col>
+						<Col>Name</Col>
+						<Col>Stats</Col>
+						<Col>Stats</Col>
+						<Col>Stats</Col>
+                    </Row> */
+				);
+			})}
 		</Container>
 	);
 };

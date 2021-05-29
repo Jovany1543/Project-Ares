@@ -1,7 +1,14 @@
-.nav-colors{
-    background-color: #A08F6E ;
+.nav-colors {
+    background-color: #A08F6E;
     border-bottom: 1px solid #4d4d4d;
-    align-items: center;
+}
+
+.navbar-toggler {
+    border: 0px solid transparent;
+}
+
+.navbar-brand {
+    text-shadow: 0.5px 0.5px 1px #000000;
 }
 
 .search {
@@ -11,8 +18,4 @@
     button{
         border-radius: 4px 10px 10px 4px;
     }
-}
-
-.navbar-toggler{
-border: 0px solid transparent;
 }

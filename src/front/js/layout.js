@@ -1,15 +1,17 @@
 import React from "react";
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
+// Pages
 import { LandingPage } from "./pages/landingPage";
+import { Login } from "./pages/login";
+import { Signup } from "./pages/signup";
 import { GunList } from "./pages/gunList";
 import { Bookmarks } from "./pages/bookmarks";
 import { Demo } from "./pages/demo";
 import { GunActivity } from "./pages/GunActivity";
 import { GunDetails } from "./pages/GunDetails";
 import injectContext from "./store/appContext";
-
+// Components
 import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 
@@ -27,6 +29,12 @@ const Layout = () => {
 					<Switch>
 						<Route exact path="/">
 							<LandingPage />
+						</Route>
+						<Route exact path="/login">
+							<Login />
+						</Route>
+						<Route exact path="/signup">
+							<Signup />
 						</Route>
 						<Route exact path="/gunlist">
 							<GunList />
