@@ -7,7 +7,7 @@ export const MyNavbar = () => {
 	return (
 		<Navbar variant="dark" className="nav-colors shadow-lg" expand="false">
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			<Navbar.Brand className="mr-auto font-weight-bold text-white" href="#home">
+			<Navbar.Brand className="mr-auto font-weight-bold text-white" href="/">
 				Guniverse
 			</Navbar.Brand>
 
