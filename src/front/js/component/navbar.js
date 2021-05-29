@@ -5,16 +5,26 @@ import "../../styles/navbar.scss";
 
 export const MyNavbar = () => {
 	return (
-		<Navbar className="nav-colors" expand="false">
+		<Navbar variant="dark" className="nav-colors shadow-lg" expand="false">
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
-			<Navbar.Brand className="mr-auto" href="#home">
+			<Navbar.Brand className="mr-auto font-weight-bold text-white" href="/">
 				Guniverse
 			</Navbar.Brand>
 
+			<Form inline className="py-0 pl-0 pr-5 search">
+				<InputGroup>
+					<FormControl type="text" placeholder="Enter your query" className="" />
+					<InputGroup.Append>
+						<Button variant="primary">Search</Button>
+					</InputGroup.Append>
+				</InputGroup>
+			</Form>
+
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
-					<Nav.Link href="#Home">Home</Nav.Link>
-					<Nav.Link href="#link">Link</Nav.Link>
+					<Nav.Link href="/">Home</Nav.Link>
+					<Nav.Link href="/signup">Sign up</Nav.Link>
+					<Nav.Link href="/login">Log in</Nav.Link>
 					<NavDropdown title="Dropdown" id="basic-nav-dropdown">
 						<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
 						<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
@@ -24,15 +34,6 @@ export const MyNavbar = () => {
 					</NavDropdown>
 				</Nav>
 			</Navbar.Collapse>
-
-			<Form inline className="py-0 pl-0 pr-5 search">
-				<InputGroup className="mb-3">
-					<FormControl type="text" placeholder="Enter your query" className="" />
-					<InputGroup.Append>
-						<Button variant="primary">Search</Button>
-					</InputGroup.Append>
-				</InputGroup>
-			</Form>
 		</Navbar>
 	);
 };
