@@ -6,6 +6,7 @@ import { LandingPage } from "./pages/landingPage";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { GunList } from "./pages/gunList";
+import { Bookmarks } from "./pages/bookmarks";
 import { Demo } from "./pages/demo";
 import { GunActivity } from "./pages/GunActivity";
 import { GunDetails } from "./pages/GunDetails";
@@ -37,6 +38,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/gunlist">
 							<GunList />
+						</Route>
+						<Route exact path="/bookmarks">
+							<Bookmarks />
 						</Route>
 						<Route exact path="/activity">
 							<GunActivity />
