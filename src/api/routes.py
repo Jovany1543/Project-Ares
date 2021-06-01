@@ -18,7 +18,7 @@ def signup():
     if body is None:
         return "The request body is null", 400
     if not email:
-        return 'You need to specify the email',400
+        return 'You need to enter an email',400
     if not password:
         return 'You need to enter a password', 400
 
@@ -27,7 +27,7 @@ def signup():
     db.session.add(user)
     db.session.commit()
     payload = {
-        'msg': 'Thank you for registering. Your account has been added successfully.',
+        'msg': 'Your account has been registered successfully.',
         'user': user.serialize()
     }
 

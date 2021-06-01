@@ -1,17 +1,41 @@
-import React, { useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export const Signup = () => {
+	const { store, actions } = useContext(Context);
+	const [userData, setUserData] = useState({
+		// Add fname and lname after
+		email: "",
+		password: ""
+	});
+
 	const {
 		register,
 		handleSubmit,
 		formState: { errors }
 	} = useForm();
 
-	const onSubmit = data => {
-		console.log(data);
+	const handleChange = e => {
+		const newUserData = { ...userData };
+		newUserData[e.target.id] = e.target.value;
+		setData(newUserData);
+		console.log(newUserData);
 	};
+
+	const onSubmit = e => {
+		e.preventDefault();
+		fetch("/api", {
+			method: "POST",
+			body: JSON.stringify({ userData }),
+			headers: { "Content-Type": "application/json" }
+		})
+			.then(res => res.json())
+			.then(json => setUser(json.userData));
+	};
+
+	// For inputs email and password, onChange not compatible with react-hook-form. I have to look at documentation and fix.
 
 	return (
 		<div className="container-fluid">
@@ -54,9 +78,11 @@ export const Signup = () => {
 								</div>
 								<div className="row justify-content-center pt-4">
 									<input
+										// onChange={e => handleChange(e)}
 										type="text"
 										name="email"
 										id="email"
+										value={data.email}
 										className="form__input border-top-0 border-left-0 border-right-0 border-bottom w-100"
 										placeholder="Email Address"
 										{...register("email", {
@@ -71,9 +97,11 @@ export const Signup = () => {
 								</div>
 								<div className="row justify-content-center pt-4">
 									<input
+										// onChange={e => handleChange(e)}
 										type="password"
 										name="password"
 										id="password"
+										value={data.password}
 										className="form__input border-top-0 border-left-0 border-right-0 border-bottom w-100"
 										placeholder="Password"
 										{...register("password", {
