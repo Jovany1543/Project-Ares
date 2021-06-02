@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, Gun, Activity, User, gun_activities, gun_bookmarks
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -16,3 +16,76 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+
+    #bookmarks page end points
+@api.route('/bookmark', methods=['POST', 'DELETE'])
+def add_new_bookmark():
+
+    # First we get the payload json
+    body = request.get_json()
+    user_id = request.json.get('user_id')
+    gun_id = request.json.get('gun_id')
+
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+    if 'user_id' not in body:
+        raise APIException('You need to specify the user id', status_code=400)
+    if 'gun_id' not in body:
+        raise APIException('You need to specify the gun id', status_code=400)
+
+    # at this point, all data has been validated, we can proceed to inster into the bd
+    try:
+        user = User.query.get(user_id)
+
+        gun = Gun.query.get(gun_id)
+
+        user.bookmarks.append(gun)
+        db.session.commit()
+    except Exception as e:
+        payload = {
+            'msg': e
+        }
+        return jsonify(payload), 409
+
+    payload = {
+        'msg': "Successfully added bookmark",
+        'user': user.serialize()
+    }
+
+    return jsonify(payload), 200
+
+
+
+def delete_member(member_id):
+    status = 200
+    try:
+        member = jackson_family.delete_member(member_id)
+        if member == False:
+            response_body = {
+                 "message": "Member not found!"
+            }
+            status = 400
+        else:
+            response_body = True
+            
+    except:
+        response_body = {
+            "message": "Error with the server"
+        }
+        status = 500
+    return jsonify(response_body), status
+
+#     #guns endpoints
+# @app.route('/members', methods=['GET'])
+# def get_all_members():
+
+#     # this is how you can use the Family datastructure by calling its methods
+#     members = jackson_family.get_all_members()
+#     response_body = {
+#         "hello": "world",
+#         "family": members
+#     }
+
+
+#     return jsonify(response_body), 200

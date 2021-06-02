@@ -7,7 +7,7 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db, Gun, Activity, User, gun_activities, gun_bookmarks
+from api.models import db
 from api.routes import api
 from api.admin import setup_admin
 
@@ -62,58 +62,3 @@ if __name__ == '__main__':
     PORT = int(os.environ.get('PORT', 3001))
     app.run(host='0.0.0.0', port=PORT, debug=True)
 
-#bookmarks page end points
-@app.route('/bookmark', methods=['POST'])
-
-def add_new_bookmark():
-
-    # First we get the payload json
-    body = request.get_json()
-
-    if body is None:
-        raise APIException("You need to specify the request body as a json object", status_code=400)
-    if 'user_id' not in body:
-        raise APIException('You need to specify the user id', status_code=400)
-    if 'gun_id' not in body:
-        raise APIException('You need to specify the gun id', status_code=400)
-
-    # at this point, all data has been validated, we can proceed to inster into the bd
-    
-    new_bookmark = gun_bookmarks.insert().values(user_id=body['user_id'], gun_id=body['gun_id'])
-    db.session.execute(new_bookmark)
-    return "ok", 200
-
-# @app.route('/member/<int:member_id>', methods=['DELETE'])
-
-# def delete_member(member_id):
-#     status = 200
-#     try:
-#         member = jackson_family.delete_member(member_id)
-#         if member == False:
-#             response_body = {
-#                  "message": "Member not found!"
-#             }
-#             status = 400
-#         else:
-#             response_body = True
-            
-#     except:
-#         response_body = {
-#             "message": "Error with the server"
-#         }
-#         status = 500
-#     return jsonify(response_body), status
-
-#     #guns endpoints
-# @app.route('/members', methods=['GET'])
-# def get_all_members():
-
-#     # this is how you can use the Family datastructure by calling its methods
-#     members = jackson_family.get_all_members()
-#     response_body = {
-#         "hello": "world",
-#         "family": members
-#     }
-
-
-#     return jsonify(response_body), 200
