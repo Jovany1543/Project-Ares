@@ -28,8 +28,8 @@ class User(db.Model):
         return {
             "id": self.id,
             "email": self.email,
-            # "first name": self.fname,
-            # "last name": self.lname,
+            "first name": self.fname,
+            "last name": self.lname,
             "bookmarks": list(map(lambda x: x.serialize(), self.bookmarks))
             # do not serialize the password, its a security breach
         }

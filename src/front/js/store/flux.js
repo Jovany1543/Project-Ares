@@ -1,7 +1,10 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	// let base_url = process.env.BACKEND_URL;
+	let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us08.gitpod.io";
 	return {
 		store: {
 			message: null,
+			user: [],
 			demo: [
 				{
 					title: "FIRST",
@@ -64,16 +67,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ alert: payload });
 			},
 
-			signup: (email, password) => {
+			signup: data => {
 				const store = getStore();
-				return fetch(`${base_url}/user/`, {
+				console.log("data received", data);
+				console.log(JSON.stringify(data));
+				return fetch(`${base_url}/api/signup/`, {
 					method: "POST",
-					cors: "no-cors",
+					// mode: "no-cors",
 					headers: { "Content-type": "application/json" },
-					body: JSON.stringify({
-						email: email,
-						password: password
-					})
+					body: JSON.stringify(data)
 				})
 					.then(res => res.json())
 					.then(data => {

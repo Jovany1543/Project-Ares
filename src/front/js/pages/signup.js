@@ -3,10 +3,11 @@ import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-export const Signup = () => {
+export const Signup = props => {
 	const { store, actions } = useContext(Context);
 	const [userData, setUserData] = useState({
-		// Add fname and lname after
+		fname: "",
+		lname: "",
 		email: "",
 		password: ""
 	});
@@ -17,25 +18,22 @@ export const Signup = () => {
 		formState: { errors }
 	} = useForm();
 
-	const handleChange = e => {
-		const newUserData = { ...userData };
-		newUserData[e.target.id] = e.target.value;
-		setData(newUserData);
-		console.log(newUserData);
+	const onSubmit = data => {
+		console.log("Form data = ", data);
+		// console.log("Email = ", data.email);
+		// const a = data;
+		// console.log("var a = ", a);
+		// setUserData(data);
+		console.log("state = ", userData);
+		actions.signup(data);
 	};
 
-	const onSubmit = e => {
-		e.preventDefault();
-		fetch("/api", {
-			method: "POST",
-			body: JSON.stringify({ userData }),
-			headers: { "Content-Type": "application/json" }
-		})
-			.then(res => res.json())
-			.then(json => setUser(json.userData));
+	const onChange = data => {
+		// console.log(`${data.name}: ${data.value}`)
+		let aux = { ...userData };
+		aux[data.name] = data.value;
+		setUserData(aux);
 	};
-
-	// For inputs email and password, onChange not compatible with react-hook-form. I have to look at documentation and fix.
 
 	return (
 		<div className="container-fluid">
@@ -47,11 +45,11 @@ export const Signup = () => {
 						</div>
 						<div className="row justify-content-center">
 							<form
-								method="POST"
-								action="/signup"
+								onChange={e => onChange(e.target)}
+								onSubmit={handleSubmit(onSubmit)}
+								// method="POST" action="/signup"
 								control=""
-								className="form-group p-2 w-100"
-								onSubmit={handleSubmit(onSubmit)}>
+								className="form-group p-2 w-100">
 								<div className="row justify-content-between pt-4">
 									<span>
 										<input
@@ -60,6 +58,7 @@ export const Signup = () => {
 											id="fname"
 											className="form__input border-top-0 border-left-0 border-right-0 border-bottom w-100"
 											placeholder="First Name"
+											// onChange={e => console.log(e.target.value)}
 											{...register("fname", { required: "Please enter your first name" })}
 										/>
 										{errors.fname && <span className="text-danger">{errors.fname.message}</span>}
@@ -78,11 +77,9 @@ export const Signup = () => {
 								</div>
 								<div className="row justify-content-center pt-4">
 									<input
-										// onChange={e => handleChange(e)}
 										type="text"
 										name="email"
 										id="email"
-										value={data.email}
 										className="form__input border-top-0 border-left-0 border-right-0 border-bottom w-100"
 										placeholder="Email Address"
 										{...register("email", {
@@ -97,11 +94,9 @@ export const Signup = () => {
 								</div>
 								<div className="row justify-content-center pt-4">
 									<input
-										// onChange={e => handleChange(e)}
 										type="password"
 										name="password"
 										id="password"
-										value={data.password}
 										className="form__input border-top-0 border-left-0 border-right-0 border-bottom w-100"
 										placeholder="Password"
 										{...register("password", {
