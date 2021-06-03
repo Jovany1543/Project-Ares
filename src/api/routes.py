@@ -19,7 +19,7 @@ def handle_hello():
 
 
     #bookmarks page end points
-@api.route('/bookmark', methods=['POST', 'DELETE'])
+@api.route('/bookmark', methods=['POST'])
 def add_new_bookmark():
 
     # First we get the payload json
@@ -56,25 +56,24 @@ def add_new_bookmark():
     return jsonify(payload), 200
 
 
+@api.route('/bookmark/<gun_id>/user/<user_id>', methods=['DELETE'])
+def delete_bookmark(gun_id,user_id):
 
-def delete_member(member_id):
-    status = 200
-    try:
-        member = jackson_family.delete_member(member_id)
-        if member == False:
-            response_body = {
-                 "message": "Member not found!"
-            }
-            status = 400
-        else:
-            response_body = True
-            
-    except:
-        response_body = {
-            "message": "Error with the server"
-        }
-        status = 500
-    return jsonify(response_body), status
+    user = User.query.get(user_id)
+    gun = Gun.query.get(gun_id)
+
+    user.bookmarks.remove(gun)
+    db.session.commit()
+
+    return "Success",200
+
+@api.route('/bookmark/user/<user_id>', methods=['GET'])
+def list_bookmarks(user_id):
+
+    user = User.query.get(user_id)
+
+    serialized_bookmarks = [item.serialize() for item in user.bookmarks]
+    return jsonify(serialized_bookmarks), 200
 
 #     #guns endpoints
 # @app.route('/members', methods=['GET'])
