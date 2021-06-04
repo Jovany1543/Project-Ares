@@ -73,7 +73,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(JSON.stringify(data));
 				return fetch(`${base_url}/api/signup/`, {
 					method: "POST",
-					// mode: "no-cors",
+					mode: "no-cors",
 					headers: { "Content-type": "application/json" },
 					body: JSON.stringify(data)
 				})
@@ -97,6 +97,49 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				// setStore({ demo: demo });
+			},
+			login: (email, password) => {
+				const store = getStore();
+				console.log("data received", email, " ", password);
+				console.log(JSON.stringify(email, password));
+				return fetch(`${base_url}/api/login/`, {
+					method: "POST",
+					// cors: "no-cors",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						email: email,
+						password: password
+					})
+				})
+					.then(res => res.json())
+					.then(data => {
+						if (typeof data.user === "undefined") throw new Error(data.msg);
+
+						setStore({
+							user: {
+								...data.user,
+								logged_in: true
+							}
+						});
+						// add token and info to local storage
+						localStorage.setItem(
+							"guniverse_user",
+							JSON.stringify({
+								token: data.token,
+								email: data.user.email,
+								id: data.user.id
+							})
+						);
+					})
+					.catch(err =>
+						getActions().setAlert({
+							type: "danger",
+							msg: err.message,
+							show: true
+						})
+					);
 			}
 		}
 	};

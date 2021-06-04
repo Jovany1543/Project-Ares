@@ -1,10 +1,11 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-export const Signup = props => {
+export const Signup = () => {
 	const { store, actions } = useContext(Context);
+
 	const [userData, setUserData] = useState({
 		fname: "",
 		lname: "",
@@ -47,7 +48,6 @@ export const Signup = props => {
 							<form
 								onChange={e => onChange(e.target)}
 								onSubmit={handleSubmit(onSubmit)}
-								// method="POST" action="/signup"
 								control=""
 								className="form-group p-2 w-100">
 								<div className="row justify-content-between pt-4">

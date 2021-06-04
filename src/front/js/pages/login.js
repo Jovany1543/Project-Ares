@@ -1,7 +1,34 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Context } from "../store/appContext";
 import { Link } from "react-router-dom";
+import { useForm } from "react-hook-form";
 
 export const Login = () => {
+	const { store, actions } = useContext(Context);
+
+	const [loginData, setLoginData] = useState({
+		email: "",
+		password: ""
+	});
+
+	const {
+		register,
+		handleSubmit,
+		formState: { errors }
+	} = useForm();
+
+	const onSubmit = data => {
+		console.log("Login data = ", data);
+		console.log("state = ", loginData);
+		actions.login(data.email, data.password);
+	};
+
+	const onChange = data => {
+		let aux = { ...loginData };
+		aux[data.name] = data.value;
+		setLoginData(aux);
+	};
+
 	return (
 		<div className="container-fluid">
 			<div className="row d-flex main-content text-center w-50 rounded shadow-lg my-5 mx-auto py-4">
@@ -11,32 +38,42 @@ export const Login = () => {
 							<h1 className="font-weight-light">Log in</h1>
 						</div>
 						<div className="row justify-content-center">
-							<form control="" className="form-group p-2 w-100">
+							<form
+								onChange={e => onChange(e.target)}
+								onSubmit={handleSubmit(onSubmit)}
+								control=""
+								className="form-group p-2 w-100">
 								<div className="row justify-content-center">
 									<input
 										type="text"
-										name="username"
-										id="username"
+										name="email"
+										id="email"
 										className="form__input border-top-0 border-left-0 border-right-0 border-bottom w-100"
 										placeholder="Email Address"
+										{...register("email", {
+											required: "E-mail is required",
+											pattern: {
+												value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+												message: "Enter a valid email address"
+											}
+										})}
 									/>
+									{errors.email && <span className="text-danger">{errors.email.message}</span>}
 								</div>
 								<div className="row justify-content-center">
 									<input
 										type="password"
 										name="password"
 										id="password"
-										className="form__input border-top-0 border-left-0 border-right-0 border-bottom w-100 pt-4"
+										className="form__input border-top-0 border-left-0 border-right-0 border-bottom w-100 mt-4"
 										placeholder="Password"
+										{...register("password", {
+											required: "Password is required."
+										})}
 									/>
+									{errors.password && <span className="text-danger">{errors.password.message}</span>}
 								</div>
-								<div className="row my-4 align-items-center">
-									<input type="checkbox" name="remember_me" id="remember_me" className="mr-1" />
-									<label className="text-black-50 mb-0" htmlFor="remember_me">
-										Remember Me
-									</label>
-								</div>
-								<div className="row justify-content-center">
+								<div className="row justify-content-center mt-4">
 									<input
 										type="submit"
 										value="Submit"
