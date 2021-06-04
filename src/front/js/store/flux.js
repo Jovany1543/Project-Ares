@@ -140,6 +140,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 							show: true
 						})
 					);
+			},
+			logout: () => {
+				setStore({
+					user: {
+						logged_in: false,
+						fname: "",
+						lname: "",
+						email: "",
+						id: null,
+						bookmarks: []
+					}
+				});
+
+				localStorage.setItem(
+					"guniverse_user",
+					JSON.stringify({
+						token: "",
+						email: "",
+						id: ""
+					})
+				);
 			}
 		}
 	};

@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export const Login = () => {
+	const history = useHistory();
+
 	const { store, actions } = useContext(Context);
 
 	const [loginData, setLoginData] = useState({
@@ -17,10 +19,18 @@ export const Login = () => {
 		formState: { errors }
 	} = useForm();
 
-	const onSubmit = data => {
+	const onSubmit = async data => {
 		console.log("Login data = ", data);
 		console.log("state = ", loginData);
-		actions.login(data.email, data.password);
+
+		try {
+			await actions.login(data.email, data.password);
+			store.user.logged_in ? console.log("You're logged in.") : console.log("Sorry. Try again later.");
+			history.push("/");
+		} catch (e) {
+			alert(e.message);
+		}
+		return false;
 	};
 
 	const onChange = data => {
