@@ -68,7 +68,7 @@ def delete_bookmark(gun_id,user_id):
     return "Success",200
 
 @api.route('/bookmark/user/<user_id>', methods=['GET'])
-def list_bookmarks(user_id):
+def get_all_bookmarks(user_id):
 
     user = User.query.get(user_id)
 
@@ -76,15 +76,9 @@ def list_bookmarks(user_id):
     return jsonify(serialized_bookmarks), 200
 
 #     #guns endpoints
-# @app.route('/members', methods=['GET'])
-# def get_all_members():
-
-#     # this is how you can use the Family datastructure by calling its methods
-#     members = jackson_family.get_all_members()
-#     response_body = {
-#         "hello": "world",
-#         "family": members
-#     }
-
-
-#     return jsonify(response_body), 200
+@api.route('/guns', methods=['GET'])
+def get_all_guns():
+   guns = Gun.query.all()
+   
+   serialized_guns = [item.serialize() for item in guns]
+   return jsonify(serialized_guns), 200
