@@ -25,3 +25,5 @@ export const GunActivity = () => {
 		</>
 	);
 };
+
+// array.filter(item=>item.activities.includes("hunting"))

@@ -14,6 +14,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
+			user: {
+				id: "1",
+				email: "email@gmail.com",
+				loggedin: "false"
+			},
+			bookmarkData: [],
 			gunData: [
 				{
 					id: "1",
@@ -82,6 +88,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(process.env.BACKEND_URL + "/api/guns")
 					.then(resp => resp.json())
 					.then(data => setStore({ gunData: data }))
+					.catch(error => console.log("Error loading message from backend", error));
+			},
+			getBookmarkData: () => {
+				// fetching data from the backend
+				fetch(process.env.BACKEND_URL + "/api/bookmark/user/" + getStore().user.id)
+					.then(resp => resp.json())
+					.then(data => {
+						console.log("data ", data);
+						setStore({ bookmarkData: data });
+					})
 					.catch(error => console.log("Error loading message from backend", error));
 			}
 		}
