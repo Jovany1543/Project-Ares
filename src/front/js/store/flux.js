@@ -76,6 +76,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+			getGunData: () => {
+				// fetching data from the backend
+				fetch(process.env.BACKEND_URL + "/api/guns")
+					.then(resp => resp.json())
+					.then(data => setStore({ gunData: data }))
+					.catch(error => console.log("Error loading message from backend", error));
 			}
 		}
 	};
