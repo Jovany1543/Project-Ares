@@ -2,17 +2,18 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 // Components
 import { MiniJumbo } from "../component/MiniJumbo";
-import { CustomList } from "../component/CustomList";
+import { ListGroup, Row, Col, Form } from "react-bootstrap";
 // Stylesheet
 import "../../styles/GunActivity.scss";
 
 export const GunActivity = () => {
 	const { store, actions } = useContext(Context);
+	let activity = "Hunting";
 
 	return (
 		<>
 			<MiniJumbo />
-			<h1 className="text-center">Hunting</h1>
+			<h1 className="text-center">{activity}</h1>
 			<div className="d-flex justify-content-center">
 				<p className="w-75">
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi amet culpa est fuga eaque,
@@ -21,7 +22,38 @@ export const GunActivity = () => {
 					laborum rem tenetur aliquid commodi. Rerum, quasi?
 				</p>
 			</div>
-			<CustomList title="Recommended for:" />
+			<ListGroup variant="flush">
+				{store.gunData.length > 0 &&
+					store.gunData
+						.filter(item => item.activities.includes(activity.toLowerCase()))
+						.map((item, index) => {
+							return (
+								<ListGroup.Item key={index} className="bg-color">
+									<Row className="gunList-row">
+										<Col>
+											<Form.Check
+												inline
+												label="1"
+												name="group1"
+												type={item.type}
+												id={`inline-${item.type}-1`}
+											/>
+											<img
+												className="d-block w-55"
+												src="https://via.placeholder.com/100"
+												alt="Second slide"
+											/>
+										</Col>
+										<Col>{item.name}</Col>
+										<Col>{item.guntype}</Col>
+										<Col>{item.id}</Col>
+									</Row>
+								</ListGroup.Item>
+							);
+						})}
+			</ListGroup>
 		</>
 	);
 };
+
+// gunData.filter(item => item.activities.includes("hunting"));
