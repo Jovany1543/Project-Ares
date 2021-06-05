@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useContext, useState } from "react";
+import { Context } from "../store/appContext";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, InputGroup } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import "../../styles/navbar.scss";
 
 export const MyNavbar = () => {
+	const { store, actions } = useContext(Context);
+
 	return (
 		<Navbar variant="dark" className="nav-colors shadow-lg" expand="false">
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
@@ -22,15 +25,26 @@ export const MyNavbar = () => {
 			<Navbar.Collapse id="basic-navbar-nav">
 				<Nav className="mr-auto">
 					<Nav.Link href="/">Home</Nav.Link>
-					<Nav.Link href="/signup">Sign up</Nav.Link>
-					<Nav.Link href="/login">Log in</Nav.Link>
-					<NavDropdown title="Dropdown" id="basic-nav-dropdown">
+					{store.user.logged_in ? (
+						<>
+							<Nav.Link href="/bookmarks">Your Bookmarks</Nav.Link>
+							<Nav.Link href="/" onClick={e => actions.logout()}>
+								Log out
+							</Nav.Link>
+						</>
+					) : (
+						<>
+							<Nav.Link href="/signup">Sign up</Nav.Link>
+							<Nav.Link href="/login">Log in</Nav.Link>
+						</>
+					)}
+					{/* <NavDropdown title="Dropdown" id="basic-nav-dropdown">
 						<NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
 						<NavDropdown.Item href="#action/3.2">Another action</NavDropdown.Item>
 						<NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
 						<NavDropdown.Divider />
 						<NavDropdown.Item href="#action/3.4">Separated link</NavDropdown.Item>
-					</NavDropdown>
+					</NavDropdown> */}
 				</Nav>
 			</Navbar.Collapse>
 		</Navbar>

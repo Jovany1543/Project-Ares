@@ -15,7 +15,7 @@ import {
 	Pagination
 } from "react-bootstrap";
 import { CustomList } from "../component/CustomList";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import rigoImageUrl from "../../img/rigo-baby.jpeg";
 
 export const Bookmarks = props => {
 	const { store, actions } = useContext(Context);
