@@ -36,13 +36,31 @@ const Layout = () => {
 						<Route exact path="/signup">
 							<Signup />
 						</Route>
-						<Route exact path="/gunlist">
+						<Route exact path="/handguns">
+							<GunList />
+						</Route>
+						<Route exact path="/rifles">
+							<GunList />
+						</Route>
+						<Route exact path="/shotguns">
 							<GunList />
 						</Route>
 						<Route exact path="/bookmarks">
 							<Bookmarks />
 						</Route>
-						<Route exact path="/activity">
+						<Route exact path="/everydaycarry">
+							<GunActivity />
+						</Route>
+						<Route exact path="/homedefense">
+							<GunActivity />
+						</Route>
+						<Route exact path="/hunting">
+							<GunActivity />
+						</Route>
+						<Route exact path="/competitiveshooting">
+							<GunActivity />
+						</Route>
+						<Route exact path="/collecting">
 							<GunActivity />
 						</Route>
 						<Route exact path="/gun">
