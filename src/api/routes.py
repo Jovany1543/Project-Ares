@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, Gun, Activity, User, gun_activities, gun_bookmarks
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required,get_jwt_identity
 
@@ -64,12 +64,70 @@ def handle_login():
         'user': user.serialize()
     }
     return jsonify(payload), 200
-    # return jsonify(access_token=access_token)
 
-# # Protect a route with jwt_required, which will kick out requests without a valid JWT present.
-# @api.route("/protected", methods=["GET"])
-# @jwt_required()
-# def protected():
-#     # Access the identity of the current user with get_jwt_identity
-#     current_user = get_jwt_identity()
-#     return jsonify(logged_in_as=current_user), 200
+
+
+    #bookmarks page end points
+@api.route('/bookmark', methods=['POST'])
+def add_new_bookmark():
+
+    # First we get the payload json
+    body = request.get_json()
+    user_id = request.json.get('user_id')
+    gun_id = request.json.get('gun_id')
+
+    if body is None:
+        raise APIException("You need to specify the request body as a json object", status_code=400)
+    if 'user_id' not in body:
+        raise APIException('You need to specify the user id', status_code=400)
+    if 'gun_id' not in body:
+        raise APIException('You need to specify the gun id', status_code=400)
+
+    # at this point, all data has been validated, we can proceed to inster into the bd
+    try:
+        user = User.query.get(user_id)
+
+        gun = Gun.query.get(gun_id)
+
+        user.bookmarks.append(gun)
+        db.session.commit()
+    except Exception as e:
+        payload = {
+            'msg': e
+        }
+        return jsonify(payload), 409
+
+    payload = {
+        'msg': "Successfully added bookmark",
+        'user': user.serialize()
+    }
+
+    return jsonify(payload), 200
+
+
+@api.route('/bookmark/<gun_id>/user/<user_id>', methods=['DELETE'])
+def delete_bookmark(gun_id,user_id):
+
+    user = User.query.get(user_id)
+    gun = Gun.query.get(gun_id)
+
+    user.bookmarks.remove(gun)
+    db.session.commit()
+
+    return "Success",200
+
+@api.route('/bookmark/user/<user_id>', methods=['GET'])
+def get_all_bookmarks(user_id):
+
+    user = User.query.get(user_id)
+
+    serialized_bookmarks = [item.serialize() for item in user.bookmarks]
+    return jsonify(serialized_bookmarks), 200
+
+#     #guns endpoints
+@api.route('/guns', methods=['GET'])
+def get_all_guns():
+   guns = Gun.query.all()
+   
+   serialized_guns = [item.serialize() for item in guns]
+   return jsonify(serialized_guns), 200

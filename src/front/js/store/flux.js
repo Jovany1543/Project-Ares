@@ -17,41 +17,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 					initial: "white"
 				}
 			],
-			gunData: [
-				{
-					id: "1",
-					name: "Glock 19M",
-					manufacturer: "Glock",
-					caliber: "9mm",
-					barrelLength: '4.02"',
-					capacity: "15+1",
-					category: "handgun",
-					type: "semi-auto",
-					weight: "24.83 oz"
-				},
-				{
-					id: "2",
-					name: "Glock 17",
-					manufacturer: "Glock",
-					caliber: "9mm",
-					barrelLength: '4.49"',
-					capacity: "17+1",
-					category: "handgun",
-					type: "semi-auto",
-					weight: "22.04 oz"
-				},
-				{
-					id: "1",
-					name: "Baretta 92 FS",
-					manufacturer: "Glock",
-					caliber: "9mm",
-					barrelLength: '4.02"',
-					capacity: "10",
-					category: "handgun",
-					type: "semi-auto",
-					weight: "24.83 oz"
-				}
-			]
+			user: {
+				id: "1",
+				email: "email@gmail.com",
+				loggedin: "false"
+			},
+			bookmarkData: [],
+			gunData: []
 		},
 		actions: {
 			// Use getActions to call a function within a function
@@ -157,7 +129,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						bookmarks: []
 					}
 				});
-
 				localStorage.setItem(
 					"guniverse_user",
 					JSON.stringify({
@@ -166,6 +137,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						id: ""
 					})
 				);
+				//reset the global store
+				setStore({ demo: demo });
+			},
+			getGunData: () => {
+				// fetching data from the backend
+				fetch(process.env.BACKEND_URL + "/api/guns")
+					.then(resp => resp.json())
+					.then(data => setStore({ gunData: data }))
+					.catch(error => console.log("Error loading message from backend", error));
+			},
+			getBookmarkData: () => {
+				// fetching data from the backend
+				fetch(process.env.BACKEND_URL + "/api/bookmark/user/" + getStore().user.id)
+					.then(resp => resp.json())
+					.then(data => {
+						console.log("data ", data);
+						setStore({ bookmarkData: data });
+					})
+					.catch(error => console.log("Error loading message from backend", error));
 			}
 		}
 	};

@@ -29,12 +29,18 @@ export const Bookmarks = props => {
 				</Navbar.Brand>
 			</Navbar>
 			<ListGroup variant="flush">
-				{store.gunData.map((item, index) => {
+				{store.bookmarkData.map((item, index) => {
 					return (
 						<ListGroup.Item key={index} className="bg-color">
 							<Row className="gunList-row">
 								<Col>
-									<Form.Check inline label="1" name="group1" type={type} id={`inline-${type}-1`} />
+									<Form.Check
+										inline
+										label="1"
+										name="group1"
+										type={item.type}
+										id={`inline-${item.type}-1`}
+									/>
 									<img
 										className="d-block w-55"
 										src="https://via.placeholder.com/100"
@@ -42,7 +48,7 @@ export const Bookmarks = props => {
 									/>
 								</Col>
 								<Col>{item.name}</Col>
-								<Col>{item.type}</Col>
+								<Col>{item.guntype}</Col>
 								<Col>{item.id}</Col>
 							</Row>
 						</ListGroup.Item>
