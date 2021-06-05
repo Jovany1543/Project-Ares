@@ -73,11 +73,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(JSON.stringify(data));
 				return fetch(`${base_url}/api/signup/`, {
 					method: "POST",
-					mode: "no-cors",
+					// mode: "no-cors",
 					headers: { "Content-type": "application/json" },
 					body: JSON.stringify(data)
 				})
-					.then(res => res.json())
+					.then(res => {
+						if (!res.ok) throw new Error(res.statusText);
+
+						return res.json();
+					})
 					.then(data => {
 						console.log("data ", data);
 						setStore({
@@ -93,7 +97,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						});
 
 						return true;
-					});
+					})
+					.catch(err => console.error(err));
 
 				//reset the global store
 				// setStore({ demo: demo });
