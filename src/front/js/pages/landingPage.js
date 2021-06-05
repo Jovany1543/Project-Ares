@@ -5,11 +5,11 @@ import { Context } from "../store/appContext";
 import handgunImage from "../../img/handgun.jpeg";
 import rifleImage from "../../img/rifle.jpeg";
 import shotgunImage from "../../img/shotgun.jpeg";
-import everyDayCarryImage from "../../img/Concealed-Carry.jpg";
-import homeDefenseImage from "../../img/home-defense.jpg";
+import everyDayCarryImage from "../../img/Concealed-Carry.jpeg";
+import homeDefenseImage from "../../img/home-defense.jpeg";
 import huntingImage from "../../img/hunt.jpeg";
-import competitionImage from "../../img/pistol-competition.jpg";
-import collectibleImage from "../../img/collectible.jpg";
+import competitionImage from "../../img/pistol-competition.jpeg";
+import collectibleImage from "../../img/collectible.jpeg";
 
 import { Jumbotron, Container, Carousel, Row, Col } from "react-bootstrap";
 import "../../styles/home.scss";
