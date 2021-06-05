@@ -23,7 +23,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				loggedin: "false"
 			},
 			bookmarkData: [],
-			gunData: []
+			gunData: [],
+			activityData: []
 		},
 		actions: {
 			// Use getActions to call a function within a function
@@ -154,6 +155,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						console.log("data ", data);
 						setStore({ bookmarkData: data });
+					})
+					.catch(error => console.log("Error loading message from backend", error));
+			},
+			getActivityData: () => {
+				// fetching data from the backend
+				fetch(process.env.BACKEND_URL + "/api/activities")
+					.then(resp => resp.json())
+					.then(data => {
+						console.log("data ", data);
+						setStore({ activityData: data });
 					})
 					.catch(error => console.log("Error loading message from backend", error));
 			}

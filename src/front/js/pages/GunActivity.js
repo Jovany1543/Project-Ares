@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 // Components
 import { MiniJumbo } from "../component/MiniJumbo";
 import { ListGroup, Row, Col, Form } from "react-bootstrap";
@@ -8,12 +9,12 @@ import "../../styles/GunActivity.scss";
 
 export const GunActivity = () => {
 	const { store, actions } = useContext(Context);
-	let activity = "Hunting";
+	const activity = useParams();
 
 	return (
 		<>
 			<MiniJumbo />
-			<h1 className="text-center">{activity}</h1>
+			<h1 className="text-center">{activity.name}</h1>
 			<div className="d-flex justify-content-center">
 				<p className="w-75">
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi amet culpa est fuga eaque,
@@ -25,7 +26,7 @@ export const GunActivity = () => {
 			<ListGroup variant="flush">
 				{store.gunData.length > 0 &&
 					store.gunData
-						.filter(item => item.activities.includes(activity.toLowerCase()))
+						.filter(item => item.activities.includes(activity.name.toLowerCase()))
 						.map((item, index) => {
 							return (
 								<ListGroup.Item key={index} className="bg-color">

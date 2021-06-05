@@ -48,19 +48,7 @@ const Layout = () => {
 						<Route exact path="/bookmarks">
 							<Bookmarks />
 						</Route>
-						<Route exact path="/everydaycarry">
-							<GunActivity />
-						</Route>
-						<Route exact path="/homedefense">
-							<GunActivity />
-						</Route>
-						<Route exact path="/hunting">
-							<GunActivity />
-						</Route>
-						<Route exact path="/competitiveshooting">
-							<GunActivity />
-						</Route>
-						<Route exact path="/collecting">
+						<Route exact path="/activity/:name">
 							<GunActivity />
 						</Route>
 						<Route exact path="/gun">

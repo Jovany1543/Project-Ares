@@ -68,7 +68,7 @@ export const LandingPage = () => {
 							<Row>
 								<Col className="my-2">
 									<h1>Every-day Carry</h1>
-									<Link to="/everydaycarry">
+									<Link to="/activity/everydaycarry">
 										<img
 											className="d-block w-100 rounded shadow"
 											src={everyDayCarryImage}
@@ -78,7 +78,7 @@ export const LandingPage = () => {
 								</Col>
 								<Col className="my-2">
 									<h1>Home Defense</h1>
-									<Link to="/homedefense">
+									<Link to="/activity/homedefense">
 										<img
 											className="d-block w-100 rounded shadow"
 											src={homeDefenseImage}
@@ -88,7 +88,7 @@ export const LandingPage = () => {
 								</Col>
 								<Col className="my-2">
 									<h1>Hunting</h1>
-									<Link to="/hunting">
+									<Link to="/activity/hunting">
 										<img
 											className="d-block w-100 rounded shadow"
 											src={huntingImage}
@@ -103,13 +103,13 @@ export const LandingPage = () => {
 						<Container>
 							<Row>
 								<Col>
-									<Link to="/competitiveshooting">
+									<Link to="/activity/competitiveshooting">
 										<img className="rounded shadow" src={competitionImage} alt="Second slide" />
 									</Link>
 									<h1>Competitive Shooting</h1>
 								</Col>
 								<Col>
-									<Link to="/collecting">
+									<Link to="/activity/collecting">
 										<img className="rounded shadow" src={collectibleImage} alt="Second slide" />
 									</Link>
 									<h1>Collecting</h1>
