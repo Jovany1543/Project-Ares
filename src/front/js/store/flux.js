@@ -157,7 +157,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						bookmarks: []
 					}
 				});
-
 				localStorage.setItem(
 					"guniverse_user",
 					JSON.stringify({

@@ -20,9 +20,6 @@ export const Login = () => {
 	} = useForm();
 
 	const onSubmit = async data => {
-		console.log("Login data = ", data);
-		console.log("state = ", loginData);
-
 		try {
 			await actions.login(data.email, data.password);
 			store.user.logged_in ? console.log("You're logged in.") : console.log("Sorry. Try again later.");
