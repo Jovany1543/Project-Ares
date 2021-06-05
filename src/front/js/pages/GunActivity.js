@@ -9,12 +9,13 @@ import "../../styles/GunActivity.scss";
 
 export const GunActivity = () => {
 	const { store, actions } = useContext(Context);
-	const activity = useParams();
-
+	const activity = useParams().name;
+	const activity_displayName = store.activityData.filter(item => item.name.includes(activity.toLowerCase()));
+	console.log("this is the data on gun activity array:" + store.activityData);
 	return (
 		<>
 			<MiniJumbo />
-			<h1 className="text-center">{activity.name}</h1>
+			<h1 className="text-center">{activity_displayName}</h1>
 			<div className="d-flex justify-content-center">
 				<p className="w-75">
 					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi amet culpa est fuga eaque,
@@ -26,7 +27,7 @@ export const GunActivity = () => {
 			<ListGroup variant="flush">
 				{store.gunData.length > 0 &&
 					store.gunData
-						.filter(item => item.activities.includes(activity.name.toLowerCase()))
+						.filter(item => item.activities.includes(activity.toLowerCase()))
 						.map((item, index) => {
 							return (
 								<ListGroup.Item key={index} className="bg-color">
@@ -56,5 +57,3 @@ export const GunActivity = () => {
 		</>
 	);
 };
-
-// gunData.filter(item => item.activities.includes("hunting"));

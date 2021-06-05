@@ -136,5 +136,5 @@ def get_all_guns():
 def get_all_activities():
    activities = Activitiy.query.all()
    
-   serialized_activities = [item.serialize() for item in activities]
-   return jsonify(serialized_activities), 200
+  
+   return jsonify(activities), 200
