@@ -23,8 +23,6 @@ const Layout = () => {
 
 	const [loggedIn, setLoggedIn] = useState(false);
 
-	sessionStorage.getItem("guniverse_user").token ? setLoggedIn(true) : "";
-
 	return (
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>

@@ -37,7 +37,15 @@ export const MyNavbar = props => {
 								as={Link}
 								to="/"
 								onClick={e => {
-									sessionStorage.clear();
+									// sessionStorage.clear();
+									sessionStorage.setItem(
+										"guniverse_user",
+										JSON.stringify({
+											token: "",
+											email: "",
+											id: ""
+										})
+									);
 									props.setLoggedIn(false);
 								}}>
 								Log out
