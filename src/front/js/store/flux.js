@@ -5,23 +5,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 		store: {
 			message: null,
 			user: [],
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
-			user: {
-				id: "1",
-				email: "email@gmail.com",
-				loggedin: "false"
-			},
 			bookmarkData: [],
 			gunData: []
 		},
@@ -65,46 +48,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return true;
 					})
 					.catch(err => console.error(err));
-
-				//reset the global store
-				// setStore({ demo: demo });
 			},
-			// login: (email, password) => {
-			// 	console.log("data received", email, " ", password);
-			// 	console.log(JSON.stringify(email, password));
-			// 	return fetch(`${base_url}/api/login/`, {
-			// 		method: "POST",
-			// 		// cors: "no-cors",
-			// 		headers: {
-			// 			"Content-Type": "application/json"
-			// 		},
-			// 		body: JSON.stringify({
-			// 			email: email,
-			// 			password: password
-			// 		})
-			// 	})
-			// 		.then(res => res.json())
-			// 		.then(data => {
-			// 			if (typeof data.user === "undefined") throw new Error(data.msg);
-
-			// 			// add token and info to local storage
-			// 			sessionStorage.setItem(
-			// 				"guniverse_user",
-			// 				JSON.stringify({
-			// 					token: data.token,
-			// 					email: data.user.email,
-			// 					id: data.user.id
-			// 				})
-			// 			);
-			// 		})
-			// 		.catch(err =>
-			// 			getActions().setAlert({
-			// 				type: "danger",
-			// 				msg: err.message,
-			// 				show: true
-			// 			})
-			// 		);
-			// },
 			getGunData: () => {
 				// fetching data from the backend
 				fetch(process.env.BACKEND_URL + "/api/guns")
