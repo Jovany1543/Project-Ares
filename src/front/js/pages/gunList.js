@@ -21,7 +21,7 @@ export const GunList = () => {
 		<div className="text-center mx-5">
 			<Row>
 				<Col sm={2} className="top-spacing-80">
-					<ListGroup variant="flush" ClassName="filters-listgroup">
+					<ListGroup variant="flush" className="filters-listgroup">
 						<div className="filters-header">
 							<h4>Filters</h4>
 						</div>
