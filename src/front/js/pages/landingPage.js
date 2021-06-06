@@ -34,7 +34,7 @@ export const LandingPage = () => {
 				<Row>
 					<Col md={12} lg={4} className="my-2">
 						<Container className="handgunscat">
-							<Link to="/gunlist">
+							<Link to="/category/handguns">
 								<img className="rounded shadow" src={handgunImage} alt="Second slide" />
 							</Link>
 							<h1>Handguns</h1>
@@ -42,7 +42,7 @@ export const LandingPage = () => {
 					</Col>
 					<Col md={12} lg={4} className="my-2">
 						<Container className="riflescat">
-							<Link to="/gunlist">
+							<Link to="/category/rifles">
 								<img className="rounded shadow" src={rifleImage} alt="Second slide" />
 							</Link>
 							<h1>Rifles</h1>
@@ -50,7 +50,7 @@ export const LandingPage = () => {
 					</Col>
 					<Col md={12} lg={4} className="my-2">
 						<Container className="shotgunscat">
-							<Link to="/gunlist">
+							<Link to="/category/shotguns">
 								<img className="rounded shadow" src={shotgunImage} alt="Second slide" />
 							</Link>
 							<h1>Shotguns</h1>
@@ -68,7 +68,7 @@ export const LandingPage = () => {
 							<Row>
 								<Col className="my-2">
 									<h1>Every-day Carry</h1>
-									<Link to="/activity">
+									<Link to="/activity/everydaycarry">
 										<img
 											className="d-block w-100 rounded shadow"
 											src={everyDayCarryImage}
@@ -78,7 +78,7 @@ export const LandingPage = () => {
 								</Col>
 								<Col className="my-2">
 									<h1>Home Defense</h1>
-									<Link to="/activity">
+									<Link to="/activity/homedefense">
 										<img
 											className="d-block w-100 rounded shadow"
 											src={homeDefenseImage}
@@ -88,7 +88,7 @@ export const LandingPage = () => {
 								</Col>
 								<Col className="my-2">
 									<h1>Hunting</h1>
-									<Link to="/activity">
+									<Link to="/activity/hunting">
 										<img
 											className="d-block w-100 rounded shadow"
 											src={huntingImage}
@@ -103,13 +103,13 @@ export const LandingPage = () => {
 						<Container>
 							<Row>
 								<Col>
-									<Link to="/activity">
+									<Link to="/activity/competitiveshooting">
 										<img className="rounded shadow" src={competitionImage} alt="Second slide" />
 									</Link>
 									<h1>Competitive Shooting</h1>
 								</Col>
 								<Col>
-									<Link to="/activity">
+									<Link to="/activity/collecting">
 										<img className="rounded shadow" src={collectibleImage} alt="Second slide" />
 									</Link>
 									<h1>Collecting</h1>

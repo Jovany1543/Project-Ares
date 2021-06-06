@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
+import { Link, useParams } from "react-router-dom";
 import {
 	ListGroup,
 	InputGroup,
@@ -12,16 +13,25 @@ import {
 	Col,
 	Pagination
 } from "react-bootstrap";
+
 import "../../styles/gunList.scss";
 
 export const GunList = () => {
 	const { store, actions } = useContext(Context);
+	const category = useParams().name;
+
+	console.log("this is the category:", category);
+	console.log("this is the gunData:", store.gunData);
+
+	const categorized_guns = store.gunData.filter(item => item.category.includes(category.toLowerCase()))[0];
+
+	console.log("this is the category_object:", categorized_guns);
 
 	return (
 		<div className="text-center mx-5">
-			<Row>
-				<Col sm={2} className="top-spacing-80">
-					<ListGroup variant="flush" className="filters-listgroup">
+			<Row className="justify-content-center">
+				{/* <Col sm={2} className="top-spacing-80">
+					<ListGroup variant="flush" ClassName="filters-listgroup">
 						<div className="filters-header">
 							<h4>Filters</h4>
 						</div>
@@ -50,35 +60,38 @@ export const GunList = () => {
 							</Form.Group>
 						</ListGroup.Item>
 					</ListGroup>
-				</Col>
+				</Col> */}
 				<Col sm={10} className="top-spacing-20">
 					<Navbar expand="lg" variant="dark" bg="dark">
 						<Navbar.Brand href="#" className="mr-auto">
-							Gun Category
+							{categorized_guns == undefined ? "loading" : categorized_guns.category}
 						</Navbar.Brand>
 					</Navbar>
 					<ListGroup variant="flush">
-						{store.gunData.map((item, index) => {
-							return (
-								<ListGroup.Item key={index} className="bg-color">
-									<Row className="gunList-row">
-										<Col>
-											<img
-												className="d-block w-55"
-												src="https://via.placeholder.com/100"
-												alt="Second slide"
-											/>
-										</Col>
-										<Col>Name: {item.name}</Col>
-										<Col>Type: {item.type}</Col>
-										<Col>ID: {item.id}</Col>
-									</Row>
-								</ListGroup.Item>
-							);
-						})}
+						{store.gunData.length > 0 &&
+							store.gunData
+								.filter(item => item.category.includes(category.toLowerCase()))
+								.map((item, index) => {
+									return (
+										<ListGroup.Item key={index} className="bg-color">
+											<Row className="gunList-row">
+												<Col>
+													<img
+														className="d-block w-55"
+														src="https://via.placeholder.com/100"
+														alt="Second slide"
+													/>
+												</Col>
+												<Col>Name: {item.name}</Col>
+												<Col>Type: {item.type}</Col>
+												<Col>ID: {item.id}</Col>
+											</Row>
+										</ListGroup.Item>
+									);
+								})}
 					</ListGroup>
 
-					<Pagination className="ml-auto pr-2">
+					{/* <Pagination className="ml-auto pr-2">
 						<Pagination.First />
 						<Pagination.Prev />
 						<Pagination.Item>{1}</Pagination.Item>
@@ -94,7 +107,7 @@ export const GunList = () => {
 						<Pagination.Item>{20}</Pagination.Item>
 						<Pagination.Next />
 						<Pagination.Last />
-					</Pagination>
+					</Pagination> */}
 				</Col>
 			</Row>
 		</div>
