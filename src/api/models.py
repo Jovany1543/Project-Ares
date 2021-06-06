@@ -44,6 +44,7 @@ class Gun(db.Model):
     category = db.Column(db.String(120))
     guntype = db.Column(db.String(120))
     weight = db.Column(db.String(120))
+    description = db.Column(db.String(120))
     activities = db.relationship('Activity', secondary=gun_activities, lazy='subquery')
 
     def __repr__(self):
@@ -66,6 +67,17 @@ class Gun(db.Model):
 class Activity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
+    displayName = db.Column(db.String(120))
+    description = db.Column(db.String(120))
+
 
     def __repr__(self):
         return '<%r>' % self.name
+
+    def serialize(self):
+       return {
+            "id": self.id,
+            "name": self.name,
+            "display_name": self.displayName,
+            "description": self.description
+        }
