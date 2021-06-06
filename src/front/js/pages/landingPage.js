@@ -34,7 +34,7 @@ export const LandingPage = () => {
 				<Row>
 					<Col md={12} lg={4} className="my-2">
 						<Container className="handgunscat">
-							<Link to="/handguns">
+							<Link to="/category/handguns">
 								<img className="rounded shadow" src={handgunImage} alt="Second slide" />
 							</Link>
 							<h1>Handguns</h1>
@@ -42,7 +42,7 @@ export const LandingPage = () => {
 					</Col>
 					<Col md={12} lg={4} className="my-2">
 						<Container className="riflescat">
-							<Link to="/rifles">
+							<Link to="/category/rifles">
 								<img className="rounded shadow" src={rifleImage} alt="Second slide" />
 							</Link>
 							<h1>Rifles</h1>
@@ -50,7 +50,7 @@ export const LandingPage = () => {
 					</Col>
 					<Col md={12} lg={4} className="my-2">
 						<Container className="shotgunscat">
-							<Link to="/shotguns">
+							<Link to="/category/shotguns">
 								<img className="rounded shadow" src={shotgunImage} alt="Second slide" />
 							</Link>
 							<h1>Shotguns</h1>

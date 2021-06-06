@@ -134,7 +134,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(process.env.BACKEND_URL + "/api/bookmark/user/1")
 					.then(resp => resp.json())
 					.then(data => {
-						console.log("data ", data);
 						setStore({ bookmarkData: data });
 					})
 					.catch(error => console.log("Error loading message from backend", error));
@@ -144,7 +143,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				fetch(process.env.BACKEND_URL + "/api/activities")
 					.then(resp => resp.json())
 					.then(data => {
-						console.log("data ", data);
 						setStore({ activityData: data });
 					})
 					.catch(error => console.log("Error loading message from backend", error));

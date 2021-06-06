@@ -36,13 +36,7 @@ const Layout = () => {
 						<Route exact path="/signup">
 							<Signup />
 						</Route>
-						<Route exact path="/handguns">
-							<GunList />
-						</Route>
-						<Route exact path="/rifles">
-							<GunList />
-						</Route>
-						<Route exact path="/shotguns">
+						<Route exact path="/category/:name">
 							<GunList />
 						</Route>
 						<Route exact path="/bookmarks">
