@@ -1,27 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	// let base_url = process.env.BACKEND_URL;
-	let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us08.gitpod.io";
 	return {
 		store: {
 			message: null,
 			user: [],
-			demo: [
-				{
-					title: "FIRST",
-					background: "white",
-					initial: "white"
-				},
-				{
-					title: "SECOND",
-					background: "white",
-					initial: "white"
-				}
-			],
-			user: {
-				id: "1",
-				email: "email@gmail.com",
-				loggedin: "false"
-			},
 			bookmarkData: [],
 			gunData: [],
 			activityData: []
@@ -150,7 +131,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getBookmarkData: () => {
 				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/bookmark/user/" + getStore().user.id)
+				fetch(process.env.BACKEND_URL + "/api/bookmark/user/1")
 					.then(resp => resp.json())
 					.then(data => {
 						console.log("data ", data);

@@ -134,7 +134,6 @@ def get_all_guns():
 
 @api.route('/activities', methods=['GET'])
 def get_all_activities():
-   activities = Activitiy.query.all()
-   
-  
-   return jsonify(activities), 200
+   activities = Activity.query.all()
+   serialized_activities = [item.serialize() for item in activities]
+   return jsonify(serialized_activities), 200

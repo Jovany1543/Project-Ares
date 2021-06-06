@@ -10,19 +10,15 @@ import "../../styles/GunActivity.scss";
 export const GunActivity = () => {
 	const { store, actions } = useContext(Context);
 	const activity = useParams().name;
-	const activity_displayName = store.activityData.filter(item => item.name.includes(activity.toLowerCase()));
+	const activity_object = store.activityData.filter(item => item.name.includes(activity.toLowerCase()))[0];
+	console.log("this is the array", activity_object);
 	console.log("this is the data on gun activity array:" + store.activityData);
 	return (
 		<>
 			<MiniJumbo />
-			<h1 className="text-center">{activity_displayName}</h1>
+			<h1 className="text-center">{activity_object == undefined ? "loading" : activity_object.display_name}</h1>
 			<div className="d-flex justify-content-center">
-				<p className="w-75">
-					Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quasi amet culpa est fuga eaque,
-					laboriosam nesciunt odit in quidem minima perferendis laborum magni nulla accusantium hic sit ullam
-					qui doloremque nobis doloribus tenetur! Numquam ipsam, cumque sit ea id consequatur atque eius sunt
-					laborum rem tenetur aliquid commodi. Rerum, quasi?
-				</p>
+				<p className="w-75">{activity_object == undefined ? "loading" : activity_object.description}</p>
 			</div>
 			<ListGroup variant="flush">
 				{store.gunData.length > 0 &&
