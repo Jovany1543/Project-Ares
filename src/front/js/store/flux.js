@@ -1,4 +1,8 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	let base_url = process.env.BACKEND_URL;
+
+	// let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us08.gitpod.io";
+
 	return {
 		store: {
 			message: null,
@@ -27,6 +31,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(JSON.stringify(data));
 				return fetch(`${base_url}/api/signup/`, {
 					method: "POST",
+					// causing POST 500 and 401 error
 					// mode: "no-cors",
 					headers: { "Content-type": "application/json" },
 					body: JSON.stringify(data)

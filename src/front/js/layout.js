@@ -6,6 +6,7 @@ import { LandingPage } from "./pages/landingPage";
 import { Login } from "./pages/login";
 import { Signup } from "./pages/signup";
 import { GunList } from "./pages/gunList";
+import { SearchList } from "./pages/searchList";
 import { Bookmarks } from "./pages/bookmarks";
 import { Demo } from "./pages/demo";
 import { GunActivity } from "./pages/GunActivity";
@@ -22,18 +23,22 @@ const Layout = () => {
 	const basename = process.env.BASENAME || "";
 
 	const [loggedIn, setLoggedIn] = useState(false);
+	const [query, setQuery] = useState("");
 
 	return (
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<MyNavbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+					<MyNavbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} query={query} setQuery={setQuery} />
 					<Switch>
 						<Route exact path="/">
 							<LandingPage />
 						</Route>
 						<Route exact path="/login">
 							<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+						</Route>
+						<Route exact path="/search">
+							<SearchList query={query} setQuery={setQuery} />
 						</Route>
 						<Route exact path="/signup">
 							<Signup />
@@ -42,7 +47,7 @@ const Layout = () => {
 							<GunList />
 						</Route>
 						<Route exact path="/bookmarks">
-							<Bookmarks />
+							<Bookmarks loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route exact path="/activity/:name">
 							<GunActivity />

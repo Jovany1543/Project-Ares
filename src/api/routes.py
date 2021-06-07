@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Gun, Activity, User, gun_activities, gun_bookmarks
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required,get_jwt_identity
+from sqlalchemy.sql import exists
 
 api = Blueprint('api', __name__)
 
@@ -57,6 +58,9 @@ def handle_login():
     
     if password != user.password:
         return jsonify({"msg": "Incorrect password. Please try again."}), 401
+
+    # if user.exists():
+    #     return jsonify({"msg": "User already exists. Please log in."}), 401
 
     access_token = create_access_token(identity=email)
     payload = {

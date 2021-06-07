@@ -5,7 +5,8 @@ import { Link, Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export const Login = props => {
-	let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us08.gitpod.io";
+	// let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us08.gitpod.io";
+	let base_url = process.env.BACKEND_URL;
 
 	const { store, actions } = useContext(Context);
 
@@ -25,7 +26,7 @@ export const Login = props => {
 	const login = (email, password) => {
 		return fetch(`${base_url}/api/login/`, {
 			method: "POST",
-			// cors: "no-cors",
+			cors: "no-cors",
 			headers: {
 				"Content-Type": "application/json"
 			},

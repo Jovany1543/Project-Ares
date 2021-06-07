@@ -3,10 +3,21 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, InputGroup } from "react-bootstrap";
 import { Link, Redirect } from "react-router-dom";
+import { useForm } from "react-hook-form";
 import "../../styles/navbar.scss";
 
 export const MyNavbar = props => {
 	const { store, actions } = useContext(Context);
+
+	// const searched_gun = store.gunData.filter(gun => gun.name.includes(data["query"].toLowerCase()));
+
+	const { register, handleSubmit } = useForm();
+
+	const onSubmit = data => {
+		console.log(data["query"].toLowerCase());
+		// Sets query
+		props.setQuery(data["query"].toLowerCase());
+	};
 
 	return (
 		<Navbar variant="dark" className="nav-colors shadow-lg" expand="false">
@@ -15,11 +26,18 @@ export const MyNavbar = props => {
 				Guniverse
 			</Navbar.Brand>
 
-			<Form inline className="py-0 pl-0 pr-5 search">
-				<InputGroup>
-					<FormControl type="text" placeholder="Enter your query" className="" />
+			<Form onSubmit={handleSubmit(onSubmit)} inline className="py-0 pl-0 pr-5">
+				<InputGroup className="search h-100">
+					<input
+						type="text"
+						placeholder="Enter your query"
+						className="rounded-left border-0"
+						{...register("query")}
+					/>
 					<InputGroup.Append>
-						<Button variant="primary">Search</Button>
+						<Button as={Link} to="/search" variant="primary" className="rounded-right border-0 shadow-sm">
+							Search
+						</Button>
 					</InputGroup.Append>
 				</InputGroup>
 			</Form>
@@ -70,12 +88,13 @@ export const MyNavbar = props => {
 					</NavDropdown> */}
 				</Nav>
 			</Navbar.Collapse>
-			{/* {props.loggedIn ? "" : <Redirect to="/login" />} */}
 		</Navbar>
 	);
 };
 
 MyNavbar.propTypes = {
 	loggedIn: PropTypes.bool,
-	setLoggedIn: PropTypes.func
+	setLoggedIn: PropTypes.func,
+	query: PropTypes.string,
+	setQuery: PropTypes.func
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams, Redirect } from "react-router-dom";
 import { Context } from "../store/appContext";
 import {
 	ListGroup,
@@ -47,36 +47,34 @@ export const Bookmarks = props => {
 										alt="Second slide"
 									/>
 								</Col>
-								<Col>{item.name}</Col>
-								<Col>{item.guntype}</Col>
-								<Col>{item.id}</Col>
+								<Col>
+									<strong>Name: </strong>
+									{gun.name}
+								</Col>
+								<Col>
+									<strong>Manufacturer: </strong>
+									{gun.manufacturer}
+								</Col>
+								<Col>
+									<strong>Category: </strong>
+									{gun.category}
+								</Col>
+								<Col>
+									<strong>Gun Type: </strong>
+									{gun.guntype}
+								</Col>
 							</Row>
 						</ListGroup.Item>
 					);
 				})}
 			</ListGroup>
-
-			<Pagination className="ml-auto pr-2 justify-content-center">
-				<Pagination.First />
-				<Pagination.Prev />
-				<Pagination.Item>{1}</Pagination.Item>
-				<Pagination.Ellipsis />
-
-				<Pagination.Item>{10}</Pagination.Item>
-				<Pagination.Item>{11}</Pagination.Item>
-				<Pagination.Item active>{12}</Pagination.Item>
-				<Pagination.Item>{13}</Pagination.Item>
-				<Pagination.Item disabled>{14}</Pagination.Item>
-
-				<Pagination.Ellipsis />
-				<Pagination.Item>{20}</Pagination.Item>
-				<Pagination.Next />
-				<Pagination.Last />
-			</Pagination>
+			{props.loggedIn ? "" : <Redirect to="/login" />}
 		</div>
 	);
 };
 
 Bookmarks.propTypes = {
-	match: PropTypes.object
+	match: PropTypes.object,
+	loggedIn: PropTypes.bool,
+	setLoggedIn: PropTypes.func
 };
