@@ -9,15 +9,6 @@ import "../../styles/gunList.scss";
 export const SearchList = props => {
 	const { store, actions } = useContext(Context);
 
-	// function titleCase(str) {
-	// 	str = string.toLowerCase().split(" ");
-	// 	for (let i = 0; i < str.length; i++) {
-	// 		str[i] = str[i][0].toUpperCase() + str[i].slice(1);
-	// 	}
-
-	// 	return sentence.join(" ");
-	// }
-
 	return (
 		<div className="text-center mx-5">
 			<Row className="justify-content-center">

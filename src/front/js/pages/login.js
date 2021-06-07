@@ -26,7 +26,7 @@ export const Login = props => {
 	const login = (email, password) => {
 		return fetch(`${base_url}/api/login/`, {
 			method: "POST",
-			cors: "no-cors",
+			// cors: "no-cors",
 			headers: {
 				"Content-Type": "application/json"
 			},

@@ -21,6 +21,12 @@ export const Bookmarks = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams();
 
+	// Add userID
+
+	useEffect(() => {
+		actions.getBookmarkData();
+	});
+
 	return (
 		<div className="m-5">
 			<Navbar expand="lg" variant="dark" bg="dark">
@@ -29,18 +35,13 @@ export const Bookmarks = props => {
 				</Navbar.Brand>
 			</Navbar>
 			<ListGroup variant="flush">
-				{store.bookmarkData.map((item, index) => {
+				{console.log(store.bookmarkData)}
+				{store.bookmarkData.map((gun, index) => {
 					return (
 						<ListGroup.Item key={index} className="bg-color">
 							<Row className="gunList-row">
 								<Col>
-									<Form.Check
-										inline
-										label="1"
-										name="group1"
-										type={item.type}
-										id={`inline-${item.type}-1`}
-									/>
+									<Form.Check inline name="group1" type={gun.type} id={`inline-${gun.type}-1`} />
 									<img
 										className="d-block w-55"
 										src="https://via.placeholder.com/100"

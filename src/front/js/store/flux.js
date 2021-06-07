@@ -1,6 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	let base_url = process.env.BACKEND_URL;
-
 	// let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us08.gitpod.io";
 
 	return {
@@ -62,7 +61,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getBookmarkData: () => {
 				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/bookmark/user/1")
+				let userObj = JSON.parse(sessionStorage.getItem("guniverse_user"));
+
+				fetch(process.env.BACKEND_URL + "/api/bookmark/user/" + userObj.id)
 					.then(resp => resp.json())
 					.then(data => {
 						setStore({ bookmarkData: data });
