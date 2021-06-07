@@ -1,9 +1,11 @@
 import React, { useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export const Signup = () => {
+	const history = useHistory();
+
 	const { store, actions } = useContext(Context);
 
 	const [userData, setUserData] = useState({
@@ -19,18 +21,17 @@ export const Signup = () => {
 		formState: { errors }
 	} = useForm();
 
-	const onSubmit = data => {
-		console.log("Form data = ", data);
-		// console.log("Email = ", data.email);
-		// const a = data;
-		// console.log("var a = ", a);
-		// setUserData(data);
-		console.log("state = ", userData);
-		actions.signup(data);
+	const onSubmit = async data => {
+		try {
+			await actions.signup(data);
+			history.push("/login");
+		} catch (e) {
+			alert(e.message);
+		}
+		return false;
 	};
 
 	const onChange = data => {
-		// console.log(`${data.name}: ${data.value}`)
 		let aux = { ...userData };
 		aux[data.name] = data.value;
 		setUserData(aux);
@@ -100,8 +101,7 @@ export const Signup = () => {
 										className="form__input border-top-0 border-left-0 border-right-0 border-bottom w-100"
 										placeholder="Password"
 										{...register("password", {
-											required: "Password is required.",
-											minLength: { value: 8, message: "Password must be 8 characters or more." }
+											required: "Password is required."
 										})}
 									/>
 									{errors.password && <span className="text-danger">{errors.password.message}</span>}

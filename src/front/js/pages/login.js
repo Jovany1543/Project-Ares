@@ -1,6 +1,7 @@
 import React, { useContext, useState } from "react";
+import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
-import { Link, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
 export const Login = () => {
@@ -8,6 +9,8 @@ export const Login = () => {
 	const history = useHistory();
 
 	const { store, actions } = useContext(Context);
+
+	let history = useHistory();
 
 	const [loginData, setLoginData] = useState({
 		email: "",
@@ -20,14 +23,46 @@ export const Login = () => {
 		formState: { errors }
 	} = useForm();
 
-	const onSubmit = async data => {
-		console.log("Login data = ", data);
-		console.log("state = ", loginData);
+	const login = (email, password) => {
+		return fetch(`${base_url}/api/login/`, {
+			method: "POST",
+			// cors: "no-cors",
+			headers: {
+				"Content-Type": "application/json"
+			},
+			body: JSON.stringify({
+				email: email,
+				password: password
+			})
+		})
+			.then(res => res.json())
+			.then(data => {
+				if (typeof data.user === "undefined") throw new Error(data.msg);
 
+				// add token and info to local storage
+				sessionStorage.setItem(
+					"guniverse_user",
+					JSON.stringify({
+						token: data.token,
+						email: data.user.email,
+						id: data.user.id
+					})
+				);
+				props.setLoggedIn(true);
+				history.push("/");
+			})
+			.catch(err =>
+				actions.setAlert({
+					type: "danger",
+					msg: err.message,
+					show: true
+				})
+			);
+	};
+
+	const onSubmit = async data => {
 		try {
-			await actions.login(data.email, data.password);
-			store.user.logged_in ? console.log("You're logged in.") : console.log("Sorry. Try again later.");
-			history.push("/");
+			await login(data.email, data.password);
 		} catch (e) {
 			alert(e.message);
 		}
@@ -103,4 +138,9 @@ export const Login = () => {
 			</div>
 		</div>
 	);
+};
+
+Login.propTypes = {
+	loggedIn: PropTypes.bool,
+	setLoggedIn: PropTypes.func
 };
