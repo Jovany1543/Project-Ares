@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import gunImg from "../../img/hunt.jpeg";
 
@@ -12,32 +12,30 @@ import "../../styles/GunDetails.scss";
 import Image from "react-bootstrap/Image";
 import Container from "react-bootstrap/Container";
 import Table from "react-bootstrap/Table";
-
+import { useParams } from "react-router-dom";
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-regular-svg-icons";
 
 export const GunDetails = () => {
 	const { store, actions } = useContext(Context);
+	const params = useParams().name;
+	const gun = store.gunData.filter(item => item.name.includes(params))[0];
 
 	return (
 		<Container>
-			<h3 className="mt-4">Gun Category</h3>
-			<h1 className="text-center">Name/Variant</h1>
-			<h2 className="text-center">Manufacturer</h2>
-			<Image className="gun-img" src={gunImg} />
+			<h3 className="mt-4">{gun == undefined ? "loading" : gun.displayCategoryName}</h3>
+			<h1 className="text-center">{gun == undefined ? "loading" : gun.displayName}</h1>
+			<h2 className="text-center">{gun == undefined ? "loading" : gun.manufacturer}</h2>
+			<Image className="gun-img" src={gun == undefined ? "" : gun.imageUrl} />
+
 			<div className="text-right">
 				<FontAwesomeIcon className="bookmark-icon my-2" icon={faStar} />
 			</div>
-			<p>
-				Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores aliquid cumque, esse doloremque
-				veritatis consequuntur aliquam minima laborum magni assumenda suscipit illum autem non facere, qui
-				similique dolore vero repudiandae eligendi voluptatibus quis dolorem! Illo eos rem hic quae nemo id
-				perferendis totam, vero at eaque pariatur, numquam adipisci laudantium.
-			</p>
+			<p>{gun == undefined ? "loading" : gun.description}</p>
 			<h3 className="text-center">Specs</h3>
 			<Table bordered hover>
-				<tbody>
+				{/* <tbody>
 					{store.gunData.map((item, index) => {
 						return (
 							<tr key={index}>
@@ -46,7 +44,7 @@ export const GunDetails = () => {
 							</tr>
 						);
 					})}
-				</tbody>
+				</tbody> */}
 			</Table>
 		</Container>
 	);

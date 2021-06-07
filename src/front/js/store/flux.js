@@ -1,4 +1,5 @@
 const getState = ({ getStore, getActions, setStore }) => {
+	let base_url = process.env.BACKEND_URL;
 	return {
 		store: {
 			message: null,

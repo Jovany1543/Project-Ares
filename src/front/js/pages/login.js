@@ -4,8 +4,9 @@ import { Context } from "../store/appContext";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 
-export const Login = props => {
-	let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us08.gitpod.io";
+export const Login = () => {
+	let base_url = process.env.BACKEND_URL;
+	const history = useHistory();
 
 	const { store, actions } = useContext(Context);
 
