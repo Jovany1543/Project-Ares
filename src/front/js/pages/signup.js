@@ -23,11 +23,20 @@ export const Signup = () => {
 
 	const onSubmit = async data => {
 		try {
-			await actions.signup(data);
+			let signup = await actions.signup(data);
+			console.log(signup);
+			if (typeof signup !== "object") {
+				history.push("/login");
+			} else {
+				actions.setAlert({
+					type: "danger",
+					msg: signup.message,
+					show: true
+				});
+			}
 		} catch (e) {
 			alert(e.message);
 		}
-		history.push("/login");
 		return false;
 	};
 

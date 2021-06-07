@@ -4,6 +4,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 	return {
 		store: {
+			alert: {
+				type: "",
+				msg: "",
+				show: false
+			},
 			message: null,
 			user: [],
 			bookmarkData: [],
@@ -23,6 +28,15 @@ const getState = ({ getStore, getActions, setStore }) => {
                 */
 				setStore({ alert: payload });
 			},
+			resetAlert: () => {
+				setStore({
+					alert: {
+						type: "",
+						msg: "",
+						show: false
+					}
+				});
+			},
 
 			signup: data => {
 				const store = getStore();
@@ -36,7 +50,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					body: JSON.stringify(data)
 				})
 					.then(res => {
-						if (!res.ok) throw new Error(res.statusText);
+						if (res.status === 409)
+							throw new Error(
+								"The email address already exists. Please login to your account to continue."
+							);
+						else if (!res.ok) throw new Error(res.statusText);
 
 						return res.json();
 					})
@@ -50,7 +68,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						return true;
 					})
-					.catch(err => console.error(err));
+					.catch(err => err);
 			},
 			getGunData: () => {
 				// fetching data from the backend
