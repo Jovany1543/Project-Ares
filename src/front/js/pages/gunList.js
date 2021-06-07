@@ -76,11 +76,13 @@ export const GunList = () => {
 										<ListGroup.Item key={index} className="bg-color">
 											<Row className="gunList-row">
 												<Col>
-													<img
-														className="d-block w-55"
-														src="https://via.placeholder.com/100"
-														alt="Second slide"
-													/>
+													<Link to={"/gun/" + item.name}>
+														<img
+															className="d-block w-55"
+															src="https://via.placeholder.com/100"
+															alt="Second slide"
+														/>
+													</Link>
 												</Col>
 												<Col>Name: {item.name}</Col>
 												<Col>Type: {item.type}</Col>
