@@ -45,7 +45,7 @@ const Layout = () => {
 						<Route exact path="/activity/:name">
 							<GunActivity />
 						</Route>
-						<Route exact path="/gun">
+						<Route exact path="/gun/:name">
 							<GunDetails />
 						</Route>
 						<Route>

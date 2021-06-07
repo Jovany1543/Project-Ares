@@ -36,15 +36,18 @@ class User(db.Model):
 
 class Gun(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    name = db.Column(db.String(120))
+    name = db.Column(db.String(120), unique=True, nullable=False)
+    displayName = db.Column(db.String(120), unique=True, nullable=False)
     manufacturer = db.Column(db.String(120))
     caliber = db.Column(db.String(120))
     barrelLength = db.Column(db.String(120))
     capacity = db.Column(db.String(120))
-    category = db.Column(db.String(120))
+    category = db.Column(db.String(120), unique=False, nullable=False)
+    displayCategoryName = db.Column(db.String(120), unique=False, nullable=False)
     guntype = db.Column(db.String(120))
     weight = db.Column(db.String(120))
     description = db.Column(db.String(120))
+    imageURL= db.Column(db.String(120))
     activities = db.relationship('Activity', secondary=gun_activities, lazy='subquery')
 
     def __repr__(self):
@@ -54,13 +57,17 @@ class Gun(db.Model):
         return {
             "id": self.id,
             "name": self.name,
+            "displayName": self.displayName,
             "manufacturer": self.manufacturer,
             "caliber": self.caliber,
             "barrelLength": self.barrelLength,
             "capacity": self.capacity,
             "category": self.category,
+            "displayCategoryName": self.displayCategoryName,
             "guntype": self.guntype,
             "weight": self.weight,
+            "description": self.description,
+            "imageUrl": self.imageURL,
             "activities": list(map(lambda x: x.name, self.activities))
         }
 
@@ -69,6 +76,7 @@ class Activity(db.Model):
     name = db.Column(db.String(120), unique=True, nullable=False)
     displayName = db.Column(db.String(120))
     description = db.Column(db.String(120))
+    imageURL= db.Column(db.String(120))
 
 
     def __repr__(self):
@@ -79,5 +87,6 @@ class Activity(db.Model):
             "id": self.id,
             "name": self.name,
             "display_name": self.displayName,
-            "description": self.description
+            "description": self.description,
+            "imageUrl": self.imageURL
         }
