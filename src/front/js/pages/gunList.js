@@ -77,11 +77,7 @@ export const GunList = () => {
 											<Link to={"/gun/" + item.name}>
 												<Row className="gunList-row">
 													<Col>
-														<img
-															className="d-block w-55"
-															src={item.imageUrl}
-															alt="Second slide"
-														/>
+														<img src={item.imageUrl} alt="Second slide" />
 													</Col>
 
 													<Col>Name: {item.name}</Col>

@@ -31,25 +31,16 @@ export const GunActivity = () => {
 						.map((item, index) => {
 							return (
 								<ListGroup.Item key={index} className="bg-color">
-									<Row className="gunList-row">
-										<Col>
-											<Form.Check
-												inline
-												label="1"
-												name="group1"
-												type={item.type}
-												id={`inline-${item.type}-1`}
-											/>
-											<img
-												className="d-block w-55"
-												src="https://via.placeholder.com/100"
-												alt="Second slide"
-											/>
-										</Col>
-										<Col>{item.name}</Col>
-										<Col>{item.guntype}</Col>
-										<Col>{item.id}</Col>
-									</Row>
+									<Link to={"/gun/" + item.name}>
+										<Row className="gunList-row">
+											<Col>
+												<img className="d-block w-55" src={item.imageUrl} alt="Second slide" />
+											</Col>
+											<Col>{item.name}</Col>
+											<Col>{item.guntype}</Col>
+											<Col>{item.id}</Col>
+										</Row>
+									</Link>
 								</ListGroup.Item>
 							);
 						})}
