@@ -35,7 +35,11 @@ export const LandingPage = () => {
 					<Col md={12} lg={4} className="my-2">
 						<Container className="handgunscat">
 							<Link to="/category/handguns">
-								<img className="rounded shadow" src={handgunImage} alt="Second slide" />
+								<img
+									className="rounded shadow"
+									src="https://i.ibb.co/1MkMNpq/handgun.jpg"
+									alt="Second slide"
+								/>
 							</Link>
 							<h1>Handguns</h1>
 						</Container>
@@ -43,7 +47,11 @@ export const LandingPage = () => {
 					<Col md={12} lg={4} className="my-2">
 						<Container className="riflescat">
 							<Link to="/category/rifles">
-								<img className="rounded shadow" src={rifleImage} alt="Second slide" />
+								<img
+									className="rounded shadow"
+									src="https://i.ibb.co/k0KktfH/photo-1591123720164-de1348028a82.jpg"
+									alt="Second slide"
+								/>
 							</Link>
 							<h1>Rifles</h1>
 						</Container>
@@ -51,7 +59,11 @@ export const LandingPage = () => {
 					<Col md={12} lg={4} className="my-2">
 						<Container className="shotgunscat">
 							<Link to="/category/shotguns">
-								<img className="rounded shadow" src={shotgunImage} alt="Second slide" />
+								<img
+									className="rounded shadow"
+									src="https://i.ibb.co/cJb54Gv/shotgun.jpg"
+									alt="Second slide"
+								/>
 							</Link>
 							<h1>Shotguns</h1>
 						</Container>
@@ -71,7 +83,7 @@ export const LandingPage = () => {
 									<Link to="/activity/everydaycarry">
 										<img
 											className="d-block w-100 rounded shadow"
-											src={everyDayCarryImage}
+											src="https://i.ibb.co/NNwQKcT/Womens-Concealed-Carry-Course.jpg"
 											alt="Second slide"
 										/>
 									</Link>
@@ -81,7 +93,7 @@ export const LandingPage = () => {
 									<Link to="/activity/homedefense">
 										<img
 											className="d-block w-100 rounded shadow"
-											src={homeDefenseImage}
+											src="https://i.ibb.co/88b7rRm/balspr18-home-carbine.jpg"
 											alt="Second slide"
 										/>
 									</Link>
@@ -91,7 +103,7 @@ export const LandingPage = () => {
 									<Link to="/activity/hunting">
 										<img
 											className="d-block w-100 rounded shadow"
-											src={huntingImage}
+											src="https://i.ibb.co/gRWkjqx/hunt.jpg"
 											alt="Second slide"
 										/>
 									</Link>
@@ -104,13 +116,21 @@ export const LandingPage = () => {
 							<Row>
 								<Col>
 									<Link to="/activity/competitiveshooting">
-										<img className="rounded shadow" src={competitionImage} alt="Second slide" />
+										<img
+											className="rounded shadow"
+											src="https://i.ibb.co/rpF2XwN/pistol-competition.jpg"
+											alt="Second slide"
+										/>
 									</Link>
 									<h1>Competitive Shooting</h1>
 								</Col>
 								<Col>
 									<Link to="/activity/collecting">
-										<img className="rounded shadow" src={collectibleImage} alt="Second slide" />
+										<img
+											className="rounded shadow"
+											src="https://i.ibb.co/hBn1Nxd/download-2.jpg"
+											alt="Second slide"
+										/>
 									</Link>
 									<h1>Collecting</h1>
 								</Col>

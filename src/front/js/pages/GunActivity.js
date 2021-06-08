@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import { Link, useParams } from "react-router-dom";
 // Components
 import { MiniJumbo } from "../component/MiniJumbo";
-import { ListGroup, Row, Col, Form } from "react-bootstrap";
+import { ListGroup, Row, Col, Form, Image } from "react-bootstrap";
 // Stylesheet
 import "../../styles/GunActivity.scss";
 
@@ -15,7 +15,11 @@ export const GunActivity = () => {
 	console.log("this is the data on gun activity array:" + store.activityData);
 	return (
 		<>
-			<MiniJumbo />
+			<Image
+				className="miniJumbo"
+				src={activity_object == undefined ? "loading" : activity_object.imageUrl}
+				fluid
+			/>
 			<h1 className="text-center">{activity_object == undefined ? "loading" : activity_object.display_name}</h1>
 			<div className="d-flex justify-content-center">
 				<p className="w-75">{activity_object == undefined ? "loading" : activity_object.description}</p>
@@ -27,25 +31,16 @@ export const GunActivity = () => {
 						.map((item, index) => {
 							return (
 								<ListGroup.Item key={index} className="bg-color">
-									<Row className="gunList-row">
-										<Col>
-											<Form.Check
-												inline
-												label="1"
-												name="group1"
-												type={item.type}
-												id={`inline-${item.type}-1`}
-											/>
-											<img
-												className="d-block w-55"
-												src="https://via.placeholder.com/100"
-												alt="Second slide"
-											/>
-										</Col>
-										<Col>{item.name}</Col>
-										<Col>{item.guntype}</Col>
-										<Col>{item.id}</Col>
-									</Row>
+									<Link to={"/gun/" + item.name}>
+										<Row className="gunList-row">
+											<Col>
+												<img className="d-block w-55" src={item.imageUrl} alt="Second slide" />
+											</Col>
+											<Col>{item.name}</Col>
+											<Col>{item.guntype}</Col>
+											<Col>{item.id}</Col>
+										</Row>
+									</Link>
 								</ListGroup.Item>
 							);
 						})}
