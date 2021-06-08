@@ -33,7 +33,9 @@ def handle_signup():
     if not password:
         return 'You need to enter a password', 400
 
-    check_user = User.query.filter_by(email=email)
+    # check_user = User.query.filter_by(email=email)
+    check_user = User.query.filter_by(email=email).first()
+
     if check_user is not None:
         return jsonify({
             'msg': 'The email address already exists. Please login to your account to continue.'
