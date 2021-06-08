@@ -64,7 +64,7 @@ export const GunList = () => {
 				<Col sm={10} className="top-spacing-20">
 					<Navbar expand="lg" variant="dark" bg="dark">
 						<Navbar.Brand href="#" className="mr-auto">
-							{categorized_guns == undefined ? "loading" : categorized_guns.category}
+							{categorized_guns == undefined ? "loading" : categorized_guns.displayCategoryName}
 						</Navbar.Brand>
 					</Navbar>
 					<ListGroup variant="flush">
@@ -74,20 +74,21 @@ export const GunList = () => {
 								.map((item, index) => {
 									return (
 										<ListGroup.Item key={index} className="bg-color">
-											<Row className="gunList-row">
-												<Col>
-													<Link to={"/gun/" + item.name}>
+											<Link to={"/gun/" + item.name}>
+												<Row className="gunList-row">
+													<Col>
 														<img
 															className="d-block w-55"
-															src="https://via.placeholder.com/100"
+															src={item.imageUrl}
 															alt="Second slide"
 														/>
-													</Link>
-												</Col>
-												<Col>Name: {item.name}</Col>
-												<Col>Type: {item.type}</Col>
-												<Col>ID: {item.id}</Col>
-											</Row>
+													</Col>
+
+													<Col>Name: {item.name}</Col>
+													<Col>Type: {item.type}</Col>
+													<Col>ID: {item.id}</Col>
+												</Row>
+											</Link>
 										</ListGroup.Item>
 									);
 								})}

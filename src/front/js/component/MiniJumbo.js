@@ -5,11 +5,7 @@ import "../../styles/GunActivity.scss";
 import gunImg from "../../img/hunt.jpeg";
 
 export const MiniJumbo = () => {
-	return (
-		<>
-			<Image className="miniJumbo" src={gunImg} fluid />
-		</>
-	);
+	return <></>;
 };
 
 // MiniJumbo.propTypes = {
