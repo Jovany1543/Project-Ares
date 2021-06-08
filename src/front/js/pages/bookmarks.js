@@ -36,38 +36,42 @@ export const Bookmarks = props => {
 			</Navbar>
 			<ListGroup variant="flush">
 				{console.log(store.bookmarkData)}
-				{store.bookmarkData.map((gun, index) => {
-					return (
-						<ListGroup.Item key={index} className="bg-color">
-							<Row className="gunList-row">
-								<Col>
-									<Form.Check inline name="group1" type={gun.type} id={`inline-${gun.type}-1`} />
-									<img
-										className="d-block w-55"
-										src="https://via.placeholder.com/100"
-										alt="Second slide"
-									/>
-								</Col>
-								<Col>
-									<strong>Name: </strong>
-									{gun.name}
-								</Col>
-								<Col>
-									<strong>Manufacturer: </strong>
-									{gun.manufacturer}
-								</Col>
-								<Col>
-									<strong>Category: </strong>
-									{gun.category}
-								</Col>
-								<Col>
-									<strong>Gun Type: </strong>
-									{gun.guntype}
-								</Col>
-							</Row>
-						</ListGroup.Item>
-					);
-				})}
+				{store.bookmarkData.length > 0 &&
+					store.bookmarkData.map((gun, index) => {
+						return (
+							<ListGroup.Item key={index} className="bg-color">
+								<Link to={"/gun/" + gun.name}>
+									<Row className="gunList-row">
+										<Col>
+											<Form.Check
+												inline
+												name="group1"
+												type={gun.type}
+												id={`inline-${gun.type}-1`}
+											/>
+											<img className="d-block w-55" src={gun.imageUrl} alt="Second slide" />
+										</Col>
+										<Col>
+											<strong>Name: </strong>
+											{gun.name}
+										</Col>
+										<Col>
+											<strong>Manufacturer: </strong>
+											{gun.manufacturer}
+										</Col>
+										<Col>
+											<strong>Category: </strong>
+											{gun.category}
+										</Col>
+										<Col>
+											<strong>Gun Type: </strong>
+											{gun.guntype}
+										</Col>
+									</Row>
+								</Link>
+							</ListGroup.Item>
+						);
+					})}
 			</ListGroup>
 			{props.loggedIn ? "" : <Redirect to="/login" />}
 		</div>

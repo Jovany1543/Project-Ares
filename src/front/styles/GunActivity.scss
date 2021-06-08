@@ -27,7 +27,17 @@ h2 {
     border-right: 1px solid black;
 }
 
+
+
 .custom-thumbnail {
     border: none;
     background-color: transparent;
+}
+
+
+.col{
+    img{
+        height: 100px;
+        width: auto;
+    }
 }
