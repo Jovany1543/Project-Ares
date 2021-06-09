@@ -23,7 +23,7 @@ export const GunList = () => {
 	console.log("this is the category:", category);
 	console.log("this is the gunData:", store.gunData);
 
-	const categorized_guns = store.gunData.filter(item => item.category.includes(category.toLowerCase()))[0];
+	const categorized_guns = store.gunData.filter(gun => gun.category.includes(category.toLowerCase()))[0];
 
 	console.log("this is the category_object:", categorized_guns);
 
@@ -70,19 +70,28 @@ export const GunList = () => {
 					<ListGroup variant="flush">
 						{store.gunData.length > 0 &&
 							store.gunData
-								.filter(item => item.category.includes(category.toLowerCase()))
-								.map((item, index) => {
+								.filter(gun => gun.category.includes(category.toLowerCase()))
+								.map((gun, index) => {
 									return (
 										<ListGroup.Item key={index} className="bg-color">
-											<Link to={"/gun/" + item.name}>
+											<Link to={"/gun/" + gun.name}>
 												<Row className="gunList-row">
 													<Col>
-														<img src={item.imageUrl} alt="Second slide" />
+														<img src={gun.imageUrl} alt="Second slide" />
 													</Col>
 
-													<Col>Name: {item.name}</Col>
-													<Col>Type: {item.type}</Col>
-													<Col>ID: {item.id}</Col>
+													<Col>
+														<h6>Name:</h6>
+														<p>{gun.displayName}</p>
+													</Col>
+													<Col>
+														<h6>Type:</h6>
+														<p>{gun.guntype}</p>
+													</Col>
+													<Col>
+														<h6>ID:</h6>
+														<p>{gun.id}</p>
+													</Col>
 												</Row>
 											</Link>
 										</ListGroup.Item>

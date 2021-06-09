@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:migrations/versions/59d512ad01b2_.py
-Revision ID: 59d512ad01b2
+Revision ID: 6ef88c4b18ec
 Revises: 
-Create Date: 2021-06-07 23:42:51.144772
-=======
-Revision ID: e4b72d6f78cf
-Revises: 
-Create Date: 2021-06-08 16:38:29.149431
->>>>>>> 22834448eae4abe23bf244728360cb01a340d350:migrations/versions/e4b72d6f78cf_.py
+Create Date: 2021-06-08 22:56:43.742392
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/59d512ad01b2_.py
-revision = '59d512ad01b2'
-=======
-revision = 'e4b72d6f78cf'
->>>>>>> 22834448eae4abe23bf244728360cb01a340d350:migrations/versions/e4b72d6f78cf_.py
+revision = '6ef88c4b18ec'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -32,8 +22,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('displayName', sa.String(length=120), nullable=True),
-    sa.Column('description', sa.String(length=120), nullable=True),
-    sa.Column('imageURL', sa.String(length=120), nullable=True),
+    sa.Column('description', sa.String(length=500), nullable=True),
+    sa.Column('imageURL', sa.String(length=250), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
@@ -49,8 +39,8 @@ def upgrade():
     sa.Column('displayCategoryName', sa.String(length=120), nullable=False),
     sa.Column('guntype', sa.String(length=120), nullable=True),
     sa.Column('weight', sa.String(length=120), nullable=True),
-    sa.Column('description', sa.String(length=120), nullable=True),
-    sa.Column('imageURL', sa.String(length=120), nullable=True),
+    sa.Column('description', sa.String(length=500), nullable=True),
+    sa.Column('imageURL', sa.String(length=250), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('displayName'),
     sa.UniqueConstraint('name')

@@ -1,7 +1,17 @@
 .gun-img {
-    max-width: 100%;
+    max-width: 500px;
 }
 
 .bookmark-icon {
     font-size: 1.5rem;
+}
+
+.details-row {
+    background-color: #C5BBA8;
+    margin-top: 2vh;
+    padding: 1rem;
+}
+
+.details-row .col:not(:last-child) {
+    border-right: 1px solid black;
 }

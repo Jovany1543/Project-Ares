@@ -46,8 +46,8 @@ class Gun(db.Model):
     displayCategoryName = db.Column(db.String(120), unique=False, nullable=False)
     guntype = db.Column(db.String(120))
     weight = db.Column(db.String(120))
-    description = db.Column(db.String(120))
-    imageURL= db.Column(db.String(120))
+    description = db.Column(db.String(500))
+    imageURL= db.Column(db.String(250))
     activities = db.relationship('Activity', secondary=gun_activities, lazy='subquery')
 
     def __repr__(self):
@@ -75,8 +75,8 @@ class Activity(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(120), unique=True, nullable=False)
     displayName = db.Column(db.String(120))
-    description = db.Column(db.String(120))
-    imageURL= db.Column(db.String(120))
+    description = db.Column(db.String(500))
+    imageURL= db.Column(db.String(250))
 
 
     def __repr__(self):
