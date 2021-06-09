@@ -97,6 +97,51 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => console.log("Error loading message from backend", error));
 			}
+			// addBookmark: data => {
+			// 	//get the store
+			// 	return fetch(`${base_url}/api//bookmark/`, {
+			//     method: "POST",
+			//     // cors: "no-cors",
+			//     headers: {
+			//         "Content-Type": "application/json"
+			//     },
+			//     body: JSON.stringify({
+			//         user_id: user_id,
+			//         gun_id: gun_id
+			//     })
+			//     })
+			//     .then(res => res.json())
+			//     .then(data => {
+			//         if (typeof data.user === "undefined") throw new Error(data.msg);
+
+			//         // add token and info to local storage
+			//         sessionStorage.setItem(
+			//             "guniverse_user",
+			//             JSON.stringify({
+			//                 token: data.token,
+			//                 email: data.user.email,
+			//                 id: data.user.id
+			//             })
+			//         );
+			//         props.setLoggedIn(true);
+			//         history.push("/");
+			//     })
+			//     .catch(err =>
+			//         actions.setAlert({
+			//             type: "danger",
+			//             msg: err.message,
+			//             show: true
+			//         })
+			//     );
+			// },
+			// deleteBookmark: data => {
+			// 	//get the store
+			// 	const store = getStore();
+
+			// 	let newFavorites = store.favorites.filter((item, i) => i != data);
+
+			// 	setStore({ favorites: newFavorites });
+			// },
 		}
 	};
 };

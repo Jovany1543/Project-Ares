@@ -13,10 +13,13 @@ import { Image, Container, Table, Row, Col } from "react-bootstrap";
 import { useParams } from "react-router-dom";
 // FontAwesome
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
+import { faStar as fasFaStar } from "@fortawesome/free-solid-svg-icons";
+import { set } from "react-hook-form";
 
 export const GunDetails = () => {
 	const { store, actions } = useContext(Context);
+	const [bookmark, setBookmark] = useState(false);
 	const params = useParams().name;
 	const gun = store.gunData.filter(item => item.name.includes(params))[0];
 
@@ -28,12 +31,19 @@ export const GunDetails = () => {
 				<h2 className="text-center mt-0">{gun == undefined ? "loading" : gun.manufacturer}</h2>
 				<Image className="gun-img" src={gun == undefined ? "" : gun.imageUrl} />
 			</div>
-			<div className="text-right">
-				<FontAwesomeIcon className="bookmark-icon my-2" icon={faStar} />
+
+			<div className="d-flex justify-content-end">
+				<div className="btn fa-stack fa-2x" onClick={e => (bookmark ? setBookmark(false) : setBookmark(true))}>
+					{bookmark ? (
+						<FontAwesomeIcon className="bookmark-icon fa-stack-1x" icon={fasFaStar} />
+					) : (
+						<FontAwesomeIcon className="bookmark-icon fa-stack-1x" icon={farFaStar} />
+					)}
+				</div>
 			</div>
-			<p>{gun == undefined ? "loading" : gun.description}</p>
+			<p className="my-4">{gun == undefined ? "loading" : gun.description}</p>
 			<h3 className="text-center">Specs</h3>
-			<Row className="details-row text-center shadow">
+			<Row className="details-row text-center shadow my-4">
 				<Col>
 					<h6>Manufacturer:</h6>
 					<p>{gun == undefined ? "loading" : gun.manufacturer}</p>
@@ -59,18 +69,6 @@ export const GunDetails = () => {
 					<p>{gun == undefined ? "loading" : gun.weight}</p>
 				</Col>
 			</Row>
-			<Table bordered hover>
-				{/* <tbody>
-					{store.gunData.map((item, index) => {
-						return (
-							<tr key={index}>
-								<th>{item.name}</th>
-								<td>{item.type}</td>
-							</tr>
-						);
-					})}
-				</tbody> */}
-			</Table>
 		</Container>
 	);
 };
