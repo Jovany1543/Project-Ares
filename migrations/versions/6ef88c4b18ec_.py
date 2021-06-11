@@ -1,8 +1,8 @@
 """empty message
 
-Revision ID: e4b72d6f78cf
+Revision ID: 6ef88c4b18ec
 Revises: 
-Create Date: 2021-06-08 16:38:29.149431
+Create Date: 2021-06-08 22:56:43.742392
 
 """
 from alembic import op
@@ -10,7 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-revision = 'e4b72d6f78cf'
+revision = '6ef88c4b18ec'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -22,8 +22,8 @@ def upgrade():
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=120), nullable=False),
     sa.Column('displayName', sa.String(length=120), nullable=True),
-    sa.Column('description', sa.String(length=120), nullable=True),
-    sa.Column('imageURL', sa.String(length=120), nullable=True),
+    sa.Column('description', sa.String(length=500), nullable=True),
+    sa.Column('imageURL', sa.String(length=250), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('name')
     )
@@ -39,8 +39,8 @@ def upgrade():
     sa.Column('displayCategoryName', sa.String(length=120), nullable=False),
     sa.Column('guntype', sa.String(length=120), nullable=True),
     sa.Column('weight', sa.String(length=120), nullable=True),
-    sa.Column('description', sa.String(length=120), nullable=True),
-    sa.Column('imageURL', sa.String(length=120), nullable=True),
+    sa.Column('description', sa.String(length=500), nullable=True),
+    sa.Column('imageURL', sa.String(length=250), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('displayName'),
     sa.UniqueConstraint('name')

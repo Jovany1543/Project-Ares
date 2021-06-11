@@ -79,7 +79,7 @@ export const LandingPage = () => {
 						<Container>
 							<Row>
 								<Col className="my-2">
-									<h1>Every-day Carry</h1>
+									<h1>Everyday Carry</h1>
 									<Link to="/activity/everydaycarry">
 										<img
 											className="d-block w-100 rounded shadow"

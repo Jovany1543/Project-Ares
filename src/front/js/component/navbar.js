@@ -20,7 +20,7 @@ export const MyNavbar = props => {
 	};
 
 	return (
-		<Navbar variant="dark" className="nav-colors shadow-lg" expand="false">
+		<Navbar variant="dark" className="nav-colors shadow-sm" expand="false">
 			<Navbar.Toggle aria-controls="basic-navbar-nav" />
 			<Navbar.Brand as={Link} className="mr-auto font-weight-bold text-white" to="/">
 				Guniverse
