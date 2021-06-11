@@ -27,13 +27,15 @@ export const GunList = () => {
 
 	console.log("this is the category_object:", categorized_guns);
 
-	return (
+	return categorized_guns == undefined ? (
+		"loading"
+	) : (
 		<div className="text-center mx-5">
 			<Row className="justify-content-center">
 				<Col sm={10} className="top-spacing-20">
 					<Navbar expand="lg" variant="dark" bg="dark">
 						<Navbar.Brand href="#" className="mr-auto">
-							{categorized_guns == undefined ? "loading" : categorized_guns.displayCategoryName}
+							{categorized_guns.displayCategoryName}
 						</Navbar.Brand>
 					</Navbar>
 					<ListGroup variant="flush">
@@ -45,21 +47,28 @@ export const GunList = () => {
 										<ListGroup.Item key={index} className="bg-color">
 											<Link to={"/gun/" + gun.name}>
 												<Row className="gunList-row">
-													<Col>
-														<img className="w-100" src={gun.imageUrl} alt="Second slide" />
+													<Col className="pictureCol">
+														<img src={gun.imageUrl} />
 													</Col>
-
 													<Col>
 														<h6>Name:</h6>
 														<p>{gun.displayName}</p>
 													</Col>
 													<Col>
-														<h6>Type:</h6>
-														<p>{gun.guntype}</p>
+														<h6>Manufacturer:</h6>
+														<p>{gun.manufacturer}</p>
 													</Col>
 													<Col>
-														<h6>ID:</h6>
-														<p>{gun.id}</p>
+														<h6>Category:</h6>
+														<p>{gun.displayCategoryName}</p>
+													</Col>
+													<Col>
+														<h6>Caliber:</h6>
+														<p>{gun.caliber}</p>
+													</Col>
+													<Col>
+														<h6>Firing Modes:</h6>
+														<p>{gun.guntype}</p>
 													</Col>
 												</Row>
 											</Link>

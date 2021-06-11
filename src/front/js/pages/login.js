@@ -6,8 +6,8 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 
 export const Login = props => {
-	let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us09.gitpod.io";
-	// let base_url = process.env.BACKEND_URL;
+	// let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us09.gitpod.io";
+	let base_url = process.env.BACKEND_URL;
 
 	const { store, actions } = useContext(Context);
 
