@@ -20,8 +20,8 @@ export const GunList = () => {
 	const { store, actions } = useContext(Context);
 	const category = useParams().name;
 
-	console.log("this is the category:", category);
-	console.log("this is the gunData:", store.gunData);
+	// console.log("this is the category:", category);
+	// console.log("this is the gunData:", store.gunData);
 
 	const categorized_guns = store.gunData.filter(gun => gun.category.includes(category.toLowerCase()))[0];
 

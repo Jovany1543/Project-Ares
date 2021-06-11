@@ -74,20 +74,19 @@ def handle_login():
     }
     return jsonify(payload), 200
 
-
-
 # Bookmarks page end points
 @api.route('/bookmark/user/<int:user_id>', methods=['PUT', 'DELETE'])
 def handle_bookmarks(user_id):
+    bookmark = request.get_json()
+
     # Add Bookmarks
     if request.method == 'PUT':
         user = User.query.get(user_id)
-        bookmark = request.get_json()
         print("!!BOOKMARK: ", bookmark)
 
         try:
             user.bookmarks = []
-            bookmarkedGun = Gun.query.get(bookmark['id'])
+            bookmarkedGun = Gun.query.get(bookmark["gun"]["id"])
             user.bookmarks.append(bookmarkedGun)
         
         except Exception as e:
@@ -109,12 +108,12 @@ def handle_bookmarks(user_id):
     # Delete Bookmarks
     if request.method == 'DELETE':
         user = User.query.get(user_id)
-        gun = Gun.query.get(gun_id)
+        gun = Gun.query.get(bookmark["gun_id"])
 
         user.bookmarks.remove(gun)
         db.session.commit()
 
-        return "Success",200
+        return "Success", 200
 
 
 @api.route('/bookmark/user/<user_id>', methods=['GET'])
