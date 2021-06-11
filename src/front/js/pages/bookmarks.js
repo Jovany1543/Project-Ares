@@ -23,9 +23,9 @@ export const Bookmarks = props => {
 
 	// Add userID
 
-	useEffect(() => {
-		actions.getBookmarkData();
-	});
+	// useEffect(() => {
+	// 	actions.getBookmarkData();
+	// }, []);
 
 	return (
 		<div className="m-5">

@@ -68,7 +68,7 @@ const Layout = () => {
 							<GunActivity />
 						</Route>
 						<Route exact path="/gun/:name">
-							<GunDetails />
+							<GunDetails loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>

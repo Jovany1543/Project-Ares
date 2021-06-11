@@ -30,37 +30,6 @@ export const GunList = () => {
 	return (
 		<div className="text-center mx-5">
 			<Row className="justify-content-center">
-				{/* <Col sm={2} className="top-spacing-80">
-					<ListGroup variant="flush" ClassName="filters-listgroup">
-						<div className="filters-header">
-							<h4>Filters</h4>
-						</div>
-						<ListGroup.Item className="bg-color">
-							Type:
-							<Form.Group controlId="formBasicCheckbox">
-								<Form.Check type="checkbox" label="Check me out" />
-							</Form.Group>
-							<Form.Group controlId="formBasicCheckbox">
-								<Form.Check type="checkbox" label="Check me out" />
-							</Form.Group>
-							<Form.Group controlId="formBasicCheckbox">
-								<Form.Check type="checkbox" label="Check me out" />
-							</Form.Group>
-						</ListGroup.Item>
-						<ListGroup.Item className="bg-color">
-							Type:
-							<Form.Group controlId="formBasicCheckbox">
-								<Form.Check type="checkbox" label="Check me out" />
-							</Form.Group>
-							<Form.Group controlId="formBasicCheckbox">
-								<Form.Check type="checkbox" label="Check me out" />
-							</Form.Group>
-							<Form.Group controlId="formBasicCheckbox">
-								<Form.Check type="checkbox" label="Check me out" />
-							</Form.Group>
-						</ListGroup.Item>
-					</ListGroup>
-				</Col> */}
 				<Col sm={10} className="top-spacing-20">
 					<Navbar expand="lg" variant="dark" bg="dark">
 						<Navbar.Brand href="#" className="mr-auto">
@@ -77,7 +46,7 @@ export const GunList = () => {
 											<Link to={"/gun/" + gun.name}>
 												<Row className="gunList-row">
 													<Col>
-														<img src={gun.imageUrl} alt="Second slide" />
+														<img className="w-100" src={gun.imageUrl} alt="Second slide" />
 													</Col>
 
 													<Col>
