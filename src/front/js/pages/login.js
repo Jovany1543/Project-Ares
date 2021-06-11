@@ -3,10 +3,11 @@ import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Link, Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import { useEffect } from "react";
 
 export const Login = props => {
-	// let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us08.gitpod.io";
-	let base_url = process.env.BACKEND_URL;
+	let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us09.gitpod.io";
+	// let base_url = process.env.BACKEND_URL;
 
 	const { store, actions } = useContext(Context);
 
@@ -63,6 +64,7 @@ export const Login = props => {
 	const onSubmit = async data => {
 		try {
 			await login(data.email, data.password);
+			actions.getBookmarkData();
 		} catch (e) {
 			alert(e.message);
 		}

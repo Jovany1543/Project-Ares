@@ -1,4 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
+import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import gunImg from "../../img/hunt.jpeg";
 
@@ -17,11 +18,29 @@ import { faStar as farFaStar } from "@fortawesome/free-regular-svg-icons";
 import { faStar as fasFaStar } from "@fortawesome/free-solid-svg-icons";
 import { set } from "react-hook-form";
 
-export const GunDetails = () => {
+export const GunDetails = props => {
 	const { store, actions } = useContext(Context);
-	const [bookmark, setBookmark] = useState(false);
 	const params = useParams().name;
-	const gun = store.gunData.filter(item => item.name.includes(params))[0];
+	const gun = store.gunData.filter(gun => gun.name.includes(params))[0];
+	const [bookmark, setBookmark] = useState(false);
+
+	console.log("User: ", sessionStorage.getItem("guniverse_user"));
+	console.log("Gun ID: ", gun == undefined ? "" : gun.id);
+
+	const handleClick = async e => {
+		console.log(gun);
+		if (props.loggedIn) {
+			bookmark ? setBookmark(false) : setBookmark(true);
+			await actions.addBookmark(gun);
+		} else {
+			actions.setAlert({
+				type: "danger",
+				msg: "Please login to save your bookmark.",
+				show: true
+			});
+			return;
+		}
+	};
 
 	return (
 		<Container>
@@ -33,7 +52,7 @@ export const GunDetails = () => {
 			</div>
 
 			<div className="d-flex justify-content-end">
-				<div className="btn fa-stack fa-2x" onClick={e => (bookmark ? setBookmark(false) : setBookmark(true))}>
+				<div className="btn fa-stack fa-2x" onClick={handleClick}>
 					{bookmark ? (
 						<FontAwesomeIcon className="bookmark-icon fa-stack-1x" icon={fasFaStar} />
 					) : (
@@ -71,4 +90,10 @@ export const GunDetails = () => {
 			</Row>
 		</Container>
 	);
+};
+GunDetails.propTypes = {
+	loggedIn: PropTypes.bool,
+	setLoggedIn: PropTypes.func
+	// bookmark: PropTypes.bool,
+	// setBookmark: PropTypes.func
 };

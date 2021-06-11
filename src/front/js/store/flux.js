@@ -1,6 +1,6 @@
 const getState = ({ getStore, getActions, setStore }) => {
-	let base_url = process.env.BACKEND_URL;
-	// let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us08.gitpod.io";
+	// let base_url = process.env.BACKEND_URL;
+	let base_url = "https://3001-green-cockroach-u3tjlvcb.ws-us09.gitpod.io";
 
 	return {
 		store: {
@@ -72,7 +72,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getGunData: () => {
 				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/guns")
+				fetch(`${base_url}/api/guns`)
 					.then(resp => resp.json())
 					.then(data => setStore({ gunData: data }))
 					.catch(error => console.log("Error loading message from backend", error));
@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// fetching data from the backend
 				let userObj = JSON.parse(sessionStorage.getItem("guniverse_user"));
 
-				fetch(process.env.BACKEND_URL + "/api/bookmark/user/" + userObj.id)
+				fetch(`${base_url}/api/bookmark/user/${userObj.id}`)
 					.then(resp => resp.json())
 					.then(data => {
 						setStore({ bookmarkData: data });
@@ -90,58 +90,46 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getActivityData: () => {
 				// fetching data from the backend
-				fetch(process.env.BACKEND_URL + "/api/activities")
+				fetch(`${base_url}/api/activities`)
 					.then(resp => resp.json())
 					.then(data => {
 						setStore({ activityData: data });
 					})
 					.catch(error => console.log("Error loading message from backend", error));
+			},
+			addBookmark: gun => {
+				// const store = getStore();
+				// let bookmarks = store.user.bookmarks.concat(data);
+				let userObj = JSON.parse(sessionStorage.getItem("guniverse_user"));
+				let user_id = userObj["id"];
+				let gun_id = gun["id"];
+				print("Gun ID: ", gun_id);
+
+				let payload = {
+					id: gun_id
+				};
+				console.log(payload);
+
+				return fetch(`${base_url}/bookmark/user/${user_id}`, {
+					method: "PUT",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(payload)
+				})
+					.then(res => {
+						if (!res.ok) throw new Error(res.statusText);
+						return res.json();
+					})
+					.then(data =>
+						setStore({
+							user: {
+								...data.user,
+								loggedIn: true
+							}
+						})
+					);
 			}
-			// addBookmark: data => {
-			// 	//get the store
-			// 	return fetch(`${base_url}/api//bookmark/`, {
-			//     method: "POST",
-			//     // cors: "no-cors",
-			//     headers: {
-			//         "Content-Type": "application/json"
-			//     },
-			//     body: JSON.stringify({
-			//         user_id: user_id,
-			//         gun_id: gun_id
-			//     })
-			//     })
-			//     .then(res => res.json())
-			//     .then(data => {
-			//         if (typeof data.user === "undefined") throw new Error(data.msg);
-
-			//         // add token and info to local storage
-			//         sessionStorage.setItem(
-			//             "guniverse_user",
-			//             JSON.stringify({
-			//                 token: data.token,
-			//                 email: data.user.email,
-			//                 id: data.user.id
-			//             })
-			//         );
-			//         props.setLoggedIn(true);
-			//         history.push("/");
-			//     })
-			//     .catch(err =>
-			//         actions.setAlert({
-			//             type: "danger",
-			//             msg: err.message,
-			//             show: true
-			//         })
-			//     );
-			// },
-			// deleteBookmark: data => {
-			// 	//get the store
-			// 	const store = getStore();
-
-			// 	let newFavorites = store.favorites.filter((item, i) => i != data);
-
-			// 	setStore({ favorites: newFavorites });
-			// },
 		}
 	};
 };
