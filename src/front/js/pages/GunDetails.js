@@ -107,6 +107,4 @@ export const GunDetails = props => {
 GunDetails.propTypes = {
 	loggedIn: PropTypes.bool,
 	setLoggedIn: PropTypes.func
-	// bookmark: PropTypes.bool,
-	// setBookmark: PropTypes.func
 };
