@@ -22,16 +22,25 @@ export const GunDetails = props => {
 	const { store, actions } = useContext(Context);
 	const params = useParams().name;
 	const gun = store.gunData.filter(gun => gun.name.includes(params))[0];
-	const [bookmark, setBookmark] = useState(false);
+	let bookmarkChecker = store.bookmarkData.filter(bookmark => {
+		return bookmark.id == gun.id;
+	});
+	const [bookmark, setBookmark] = useState(bookmarkChecker == 0 ? false : true);
 
 	console.log("User: ", sessionStorage.getItem("guniverse_user"));
 	// console.log("Gun ID: ", gun.id);
 
-	const handleClick = async e => {
-		console.log(gun);
+	console.log(store.bookmarkData);
+
+	const handleClick = e => {
 		if (props.loggedIn) {
-			bookmark ? setBookmark(false) : setBookmark(true);
-			await actions.addBookmark(gun);
+			if (bookmark) {
+				setBookmark(!bookmark);
+				actions.deleteBookmark(gun);
+			} else {
+				setBookmark(!bookmark);
+				actions.addBookmark(gun);
+			}
 		} else {
 			actions.setAlert({
 				type: "danger",
@@ -41,6 +50,11 @@ export const GunDetails = props => {
 			return;
 		}
 	};
+
+	
+	useEffect(() => {
+		actions.getBookmarkData();
+	}, [bookmark]);
 
 	return gun == undefined ? (
 		"loading"

@@ -54,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							throw new Error(
 								"The email address already exists. Please login to your account to continue."
 							);
-						else if (!res.ok) throw new Error(res.statusText);
+						// else if (!res.ok) throw new Error(res.statusText);
 
 						return res.json();
 					})
@@ -98,27 +98,57 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => console.log("Error loading message from backend", error));
 			},
 			addBookmark: gun => {
-				// const store = getStore();
-				// let bookmarks = store.user.bookmarks.concat(data);
 				let userObj = JSON.parse(sessionStorage.getItem("guniverse_user"));
 				let user_id = userObj["id"];
 				let gun_id = gun["id"];
-				print("Gun ID: ", gun_id);
 
 				let payload = {
-					id: gun_id
+					gun: gun
 				};
-				console.log(payload);
+				console.log("Payload: ", payload);
 
-				return fetch(`${base_url}/bookmark/user/${user_id}`, {
+				return fetch(`${base_url}/api/bookmark/user/${user_id}`, {
 					method: "PUT",
+					// mode: "no-cors",
 					headers: {
 						"Content-Type": "application/json"
 					},
 					body: JSON.stringify(payload)
 				})
 					.then(res => {
-						if (!res.ok) throw new Error(res.statusText);
+						// if (!res.ok) throw new Error(res.statusText);
+						return res.json();
+					})
+					.then(data =>
+						setStore({
+							user: {
+								...data.user,
+								loggedIn: true
+							}
+						})
+					);
+			},
+			deleteBookmark: gun => {
+				let userObj = JSON.parse(sessionStorage.getItem("guniverse_user"));
+				let user_id = userObj["id"];
+				let gun_id = gun["id"];
+
+				let payload = {
+					gun_id: gun_id
+				};
+
+				console.log("Payload: ", payload);
+
+				return fetch(`${base_url}/api/bookmark/user/${user_id}`, {
+					method: "DELETE",
+					// mode: "no-cors",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(payload)
+				})
+					.then(res => {
+						// if (!res.ok) throw new Error(res.statusText);
 						return res.json();
 					})
 					.then(data =>
