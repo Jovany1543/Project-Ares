@@ -13,12 +13,7 @@ a:hover {
     background-color: #C5BBA8;
 }
 
-.col{
-    img{
-        height: 100px;
-        width: auto;
-    }
-}
+
 .top-spacing-80{
     padding-top: 50px;
     margin-top: 30px;
@@ -39,6 +34,26 @@ a:hover {
     margin-top: 0px;
 }
 
+
+
 .gunList-row .col:not(:last-child) {
     border-right: 1px solid black;
+    
+}
+
+.pictureCol{
+    min-width: 220px;
+    height: 140px;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    img{
+        
+    
+    height: 130px;
+    max-width: 200px;
+        
+    }
+
 }

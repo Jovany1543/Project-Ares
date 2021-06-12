@@ -27,8 +27,8 @@ export const GunDetails = props => {
 	});
 	const [bookmark, setBookmark] = useState(bookmarkChecker == 0 ? false : true);
 
-	// console.log("User: ", sessionStorage.getItem("guniverse_user"));
-	// console.log("Gun ID: ", gun == undefined ? "" : gun.id);
+	console.log("User: ", sessionStorage.getItem("guniverse_user"));
+	// console.log("Gun ID: ", gun.id);
 
 	console.log(store.bookmarkData);
 
@@ -55,13 +55,15 @@ export const GunDetails = props => {
 		actions.getBookmarkData();
 	}, [bookmark]);
 
-	return (
+	return gun == undefined ? (
+		"loading"
+	) : (
 		<Container>
-			<h4 className="mt-4">{gun == undefined ? "loading" : gun.displayCategoryName}</h4>
+			<h4 className="mt-4">{gun.displayCategoryName}</h4>
 			<div className="d-flex flex-column justify-content-center align-items-center">
-				<h1 className="text-center">{gun == undefined ? "loading" : gun.displayName}</h1>
-				<h2 className="text-center mt-0">{gun == undefined ? "loading" : gun.manufacturer}</h2>
-				<Image className="gun-img" src={gun == undefined ? "" : gun.imageUrl} />
+				<h1 className="text-center">{gun.displayName}</h1>
+				<h2 className="text-center mt-0">Made by: {gun.manufacturer}</h2>
+				<Image className="gun-img" src={gun.imageUrl} />
 			</div>
 
 			<div className="d-flex justify-content-end">
@@ -73,32 +75,36 @@ export const GunDetails = props => {
 					)}
 				</div>
 			</div>
-			<p className="my-4">{gun == undefined ? "loading" : gun.description}</p>
+			<p className="my-4">{gun.description}</p>
 			<h3 className="text-center">Specs</h3>
 			<Row className="details-row text-center shadow my-4">
 				<Col>
-					<h6>Manufacturer:</h6>
-					<p>{gun == undefined ? "loading" : gun.manufacturer}</p>
+					<h6>Caliber:</h6>
+					<p>{gun.caliber}</p>
 				</Col>
 				<Col>
-					<h6>ID:</h6>
-					<p>{gun == undefined ? "loading" : gun.caliber}</p>
+					<h6>Firing Modes:</h6>
+					<p>{gun.guntype}</p>
+				</Col>
+				<Col>
+					<h6>Manufacturer:</h6>
+					<p>{gun.manufacturer}</p>
 				</Col>
 				<Col>
 					<h6>Barrel Length:</h6>
-					<p>{gun == undefined ? "loading" : gun.barrelLength}</p>
+					<p>{gun.barrelLength}</p>
 				</Col>
 				<Col>
 					<h6>Capacity:</h6>
-					<p>{gun == undefined ? "loading" : gun.capacity}</p>
+					<p>{gun.capacity}</p>
 				</Col>
 				<Col>
-					<h6>Gun Type:</h6>
-					<p>{gun == undefined ? "loading" : gun.guntype}</p>
+					<h6>Firing Modes:</h6>
+					<p>{gun.guntype}</p>
 				</Col>
 				<Col>
 					<h6>Weight:</h6>
-					<p>{gun == undefined ? "loading" : gun.weight}</p>
+					<p>{gun.weight}</p>
 				</Col>
 			</Row>
 		</Container>
