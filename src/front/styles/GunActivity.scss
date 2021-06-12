@@ -46,9 +46,19 @@ h2 {
 }
 
 
-.col{
+.pictureCol{
+    min-width: 220px;
+    height: 140px;
+     display: flex;
+    align-items: center;
+    justify-content: center;
+    
     img{
-        height: 100px;
-        width: auto;
+        
+    
+    height: 130px;
+    max-width: 200px;
+        
     }
+
 }

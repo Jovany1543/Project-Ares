@@ -49,23 +49,28 @@ export const Bookmarks = props => {
 												type={gun.type}
 												id={`inline-${gun.type}-1`}
 											/>
-											<img className="d-block w-55" src={gun.imageUrl} alt="Second slide" />
+											<img src={gun.imageUrl} />
+										</Col>
+
+										<Col>
+											<h6>Name:</h6>
+											<p>{gun.displayName}</p>
 										</Col>
 										<Col>
-											<strong>Name: </strong>
-											{gun.name}
+											<h6>Manufacturer:</h6>
+											<p>{gun.manufacturer}</p>
 										</Col>
 										<Col>
-											<strong>Manufacturer: </strong>
-											{gun.manufacturer}
+											<h6>Category:</h6>
+											<p>{gun.displayCategoryName}</p>
 										</Col>
 										<Col>
-											<strong>Category: </strong>
-											{gun.category}
+											<h6>Caliber:</h6>
+											<p>{gun.caliber}</p>
 										</Col>
 										<Col>
-											<strong>Gun Type: </strong>
-											{gun.guntype}
+											<h6>Firing Modes:</h6>
+											<p>{gun.guntype}</p>
 										</Col>
 									</Row>
 								</Link>
