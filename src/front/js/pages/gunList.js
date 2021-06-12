@@ -22,6 +22,7 @@ export const GunList = () => {
 
 	// console.log("this is the category:", category);
 	// console.log("this is the gunData:", store.gunData);
+	actions.getGunData();
 
 	const categorized_guns = store.gunData.filter(gun => gun.category.includes(category.toLowerCase()))[0];
 
