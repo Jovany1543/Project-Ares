@@ -6,8 +6,7 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 
 export const Login = props => {
-	let base_url = "https://3001-emerald-cattle-g1268cna.ws-us09.gitpod.io/";
-	// let base_url = process.env.BACKEND_URL;
+	let base_url = process.env.BACKEND_URL;
 
 	const { store, actions } = useContext(Context);
 
@@ -27,7 +26,7 @@ export const Login = props => {
 	const login = (email, password) => {
 		return fetch(`${base_url}/api/login/`, {
 			method: "POST",
-			// cors: "no-cors",
+			cors: "no-cors",
 			headers: {
 				"Content-Type": "application/json"
 			},

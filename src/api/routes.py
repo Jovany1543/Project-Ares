@@ -4,7 +4,7 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, Gun, Activity, User, gun_activities, gun_bookmarks
 from api.utils import generate_sitemap, APIException
-from flask_jwt_extended import create_access_token, jwt_required,get_jwt_identity
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
 from sqlalchemy.sql import exists
 from twilio.rest import Client
 import os
@@ -55,9 +55,9 @@ def handle_signup():
     db.session.commit()
     message = client.messages \
                 .create(
-                     body="Join Earth's mightiest heroes. Like Kevin Bacon.",
-                     from_='+19703358326',
-                     to='+19544390177'
+                     body="Thank you for signing up with Guniverse! Your account was successfully created.",
+                     from_='+19194464678',
+                     to='+17868734221'
                  )
     payload = {
         'msg': 'Your account has been registered successfully.',

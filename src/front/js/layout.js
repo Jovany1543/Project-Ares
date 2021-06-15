@@ -16,8 +16,8 @@ import injectContext, { Context } from "./store/appContext";
 import { MyNavbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import Toast from "react-bootstrap/Toast";
-import ToastHeader from "react-bootstrap/ToastHeader";
-import ToastBody from "react-bootstrap/ToastBody";
+// import ToastHeader from "react-bootstrap/ToastHeader";
+// import ToastBody from "react-bootstrap/ToastBody";
 
 //create your first component
 const Layout = () => {
