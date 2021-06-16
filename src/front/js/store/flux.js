@@ -10,7 +10,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				show: false
 			},
 			message: null,
-			user: [],
+			user: {
+				token: "",
+				email: "",
+				id: null
+			},
 			bookmarkData: [],
 			gunData: [],
 			activityData: []
@@ -69,6 +73,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return true;
 					})
 					.catch(err => err);
+			},
+
+			handleLogin: user => {
+				const store = getStore();
+				store.user = user;
+				store.user.loggedIn = true;
+				setStore(store);
+			},
+			handleLogout: () => {
+				const store = getStore();
+				store.user = {
+					token: "",
+					email: "",
+					id: null
+				};
+				store.user.loggedIn = false;
+				setStore(store);
 			},
 			getGunData: () => {
 				// fetching data from the backend

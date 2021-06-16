@@ -51,7 +51,6 @@ export const GunDetails = props => {
 		}
 	};
 
-	
 	useEffect(() => {
 		actions.getBookmarkData();
 	}, [bookmark]);

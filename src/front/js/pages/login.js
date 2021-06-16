@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import { useEffect } from "react";
 
 export const Login = props => {
-	let base_url = "https://3001-emerald-cattle-g1268cna.ws-us09.gitpod.io/";
+	let base_url = "https://3001-emerald-cattle-g1268cna.ws-us09.gitpod.io";
 	// let base_url = process.env.BACKEND_URL;
 
 	const { store, actions } = useContext(Context);
@@ -25,6 +25,14 @@ export const Login = props => {
 	} = useForm();
 
 	const login = (email, password) => {
+		console.log("variables", email, password);
+		console.log(
+			"stringify",
+			JSON.stringify({
+				email: email,
+				password: password
+			})
+		);
 		return fetch(`${base_url}/api/login/`, {
 			method: "POST",
 			// cors: "no-cors",
@@ -49,7 +57,11 @@ export const Login = props => {
 						id: data.user.id
 					})
 				);
-				props.setLoggedIn(true);
+				actions.handleLogin({
+					token: data.token,
+					email: data.user.email,
+					id: data.user.id
+				});
 				history.push("/");
 			})
 			.catch(err =>
@@ -144,5 +156,5 @@ export const Login = props => {
 
 Login.propTypes = {
 	loggedIn: PropTypes.bool,
-	setLoggedIn: PropTypes.func
+	handleLogout: PropTypes.func
 };

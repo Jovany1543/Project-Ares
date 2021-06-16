@@ -73,6 +73,7 @@ def handle_login():
     password = request.json.get("password", None)
 
     user = User.query.filter_by(email=email).first()
+
     if user is None:
         return jsonify({
             "msg": "No account was found. Please check the email used or create an account."
@@ -83,9 +84,10 @@ def handle_login():
 
     access_token = create_access_token(identity=email)
     payload = {
-        'token': access_token,
+        'token': access_token.decode("utf-8"),
         'user': user.serialize()
     }
+
     return jsonify(payload), 200
 
 # Bookmarks page end points

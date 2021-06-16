@@ -25,7 +25,6 @@ const Layout = () => {
 	// you can set the basename on the .env file located at the root of this project, E.g: BASENAME=/react-hello-webapp/
 	const basename = process.env.BASENAME || "";
 	const { store, actions } = useContext(Context);
-	const [loggedIn, setLoggedIn] = useState(false);
 	const [query, setQuery] = useState("");
 
 	return (
@@ -44,13 +43,18 @@ const Layout = () => {
 						</Toast.Header>
 						<Toast.Body className={`alert-${store.alert.type} py-5`}>{store.alert.msg}</Toast.Body>
 					</Toast>
-					<MyNavbar loggedIn={loggedIn} setLoggedIn={setLoggedIn} query={query} setQuery={setQuery} />
+					<MyNavbar
+						loggedIn={store.user.loggedIn}
+						setLoggedIn={actions.handleLogout}
+						query={query}
+						setQuery={setQuery}
+					/>
 					<Switch>
 						<Route exact path="/">
 							<LandingPage />
 						</Route>
 						<Route exact path="/login">
-							<Login loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+							<Login loggedIn={store.user.loggedIn} setLoggedIn={actions.handleLogout} />
 						</Route>
 						<Route exact path="/search">
 							<SearchList query={query} setQuery={setQuery} />
@@ -62,13 +66,13 @@ const Layout = () => {
 							<GunList />
 						</Route>
 						<Route exact path="/bookmarks">
-							<Bookmarks loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+							<Bookmarks loggedIn={store.user.loggedIn} setLoggedIn={actions.handleLogout} />
 						</Route>
 						<Route exact path="/activity/:name">
 							<GunActivity />
 						</Route>
 						<Route exact path="/gun/:name">
-							<GunDetails loggedIn={loggedIn} setLoggedIn={setLoggedIn} />
+							<GunDetails loggedIn={store.user.loggedIn} setLoggedIn={actions.handleLogout} />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
