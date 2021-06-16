@@ -13,6 +13,12 @@ from api.admin import setup_admin
 from flask_jwt_extended import create_access_token, jwt_required,get_jwt_identity,JWTManager
 #from models import Person
 
+uri = os.getenv("DATABASE_URL")  # or other relevant config var
+if uri.startswith("postgres://"):
+    uri = uri.replace("postgres://", "postgresql://", 1)
+# rest of connection code using the connection string `uri`
+
+
 ENV = os.getenv("FLASK_ENV")
 static_file_dir = os.path.join(os.path.dirname(os.path.realpath(__file__)), '../public/')
 app = Flask(__name__)
