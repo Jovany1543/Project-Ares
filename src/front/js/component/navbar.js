@@ -69,7 +69,7 @@ export const MyNavbar = props => {
 											id: ""
 										})
 									);
-									props.setLoggedIn(false);
+									props.handleLogout();
 								}}>
 								Log out
 							</Nav.Link>
@@ -92,7 +92,7 @@ export const MyNavbar = props => {
 
 MyNavbar.propTypes = {
 	loggedIn: PropTypes.bool,
-	setLoggedIn: PropTypes.func,
+	handleLogout: PropTypes.func,
 	query: PropTypes.string,
 	setQuery: PropTypes.func
 };
