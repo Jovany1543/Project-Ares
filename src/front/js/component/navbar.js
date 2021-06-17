@@ -2,12 +2,13 @@ import React, { useContext, useState } from "react";
 import PropTypes from "prop-types";
 import { Context } from "../store/appContext";
 import { Navbar, Nav, NavDropdown, Form, FormControl, Button, InputGroup } from "react-bootstrap";
-import { Link, Redirect } from "react-router-dom";
+import { Link, Redirect, useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import "../../styles/navbar.scss";
 
 export const MyNavbar = props => {
 	const { store, actions } = useContext(Context);
+	let history = useHistory();
 
 	// const searched_gun = store.gunData.filter(gun => gun.name.includes(data["query"].toLowerCase()));
 
@@ -17,6 +18,7 @@ export const MyNavbar = props => {
 		console.log(data["query"].toLowerCase());
 		// Sets query
 		props.setQuery(data["query"].toLowerCase());
+		history.push("/search");
 	};
 
 	return (
@@ -35,7 +37,10 @@ export const MyNavbar = props => {
 						{...register("query")}
 					/>
 					<InputGroup.Append>
-						<Button as={Link} to="/search" variant="primary" className="rounded-right border-0 shadow-sm">
+						<Button
+							onClick={handleSubmit(onSubmit)}
+							variant="primary"
+							className="rounded-right border-0 shadow-sm">
 							Search
 						</Button>
 					</InputGroup.Append>
