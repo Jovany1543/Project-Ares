@@ -5,10 +5,7 @@ verify_ssl = true
 
 [dev-packages]
 
-
-
 [packages]
-
 flask = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
@@ -21,8 +18,6 @@ gunicorn = "*"
 cloudinary = "*"
 flask-admin = "*"
 flask-jwt-extended = "*"
-
-
 
 [requires]
 python_version = "3.8"
