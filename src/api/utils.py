@@ -1,5 +1,7 @@
 from flask import jsonify, url_for
-
+import requests
+from requests.auth import HTTPBasicAuth
+import os
 class APIException(Exception):
     status_code = 400
 
@@ -39,3 +41,17 @@ def generate_sitemap(app):
         <p>Start working on your proyect by following the <a href="https://start.4geeksacademy.com/starters/full-stack" target="_blank">Quick Start</a></p>
         <p>Remember to specify a real endpoint path like: </p>
         <ul style="text-align: left;">"""+links_html+"</ul></div>"
+
+def send_sms(body,to):
+    
+    url = f"https://api.twilio.com/2010-04-01/Accounts/{os.environ['TWILIO_ACCOUNT_SID']}/Messages.json"
+
+    payload=f'Body={body}&From=%2B19703358326&To=%2B{to}'
+    headers = {
+    'Content-Type': 'application/x-www-form-urlencoded'
+    }
+
+    response = requests.request("POST", url, headers=headers, data=payload, auth=HTTPBasicAuth(os.environ['TWILIO_ACCOUNT_SID'], os.environ['TWILIO_AUTH_TOKEN']))
+
+    print(response.text)
+
