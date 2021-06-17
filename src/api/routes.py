@@ -57,7 +57,7 @@ def handle_signup():
                 .create(
                      body="Thank you for signing up with Guniverse! Your account was successfully created.",
                      from_='+19703358326',
-                     to='+19544390177'
+                     to='+14079954145'
                  )
     payload = {
         'msg': 'Your account has been registered successfully.',
