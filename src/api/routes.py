@@ -55,7 +55,7 @@ def handle_signup():
     db.session.commit()
     message = client.messages \
                 .create(
-                     body="Join Earth's mightiest heroes. Like Kevin Bacon.",
+                     body="Thank you for signing up with Guniverse! Your account was successfully created.",
                      from_='+19703358326',
                      to='+19544390177'
                  )

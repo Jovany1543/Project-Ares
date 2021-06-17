@@ -15,7 +15,7 @@ import {
 	Pagination
 } from "react-bootstrap";
 import { CustomList } from "../component/CustomList";
-import rigoImageUrl from "../../img/rigo-baby.jpeg";
+import "../../styles/bookmarks.scss";
 
 export const Bookmarks = props => {
 	const { store, actions } = useContext(Context);
@@ -42,13 +42,13 @@ export const Bookmarks = props => {
 							<ListGroup.Item key={index} className="bg-color">
 								<Link to={"/gun/" + gun.name}>
 									<Row className="gunList-row">
-										<Col>
-											<Form.Check
+										<Col className="pictureCol">
+											{/* <Form.Check
 												inline
 												name="group1"
 												type={gun.type}
 												id={`inline-${gun.type}-1`}
-											/>
+											/> */}
 											<img src={gun.imageUrl} />
 										</Col>
 
