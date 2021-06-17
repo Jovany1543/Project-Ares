@@ -21,7 +21,7 @@ gunicorn = "*"
 cloudinary = "*"
 flask-admin = "*"
 flask-jwt-extended = "*"
-twilio = "*"
+
 
 
 [requires]
