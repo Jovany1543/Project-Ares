@@ -5,7 +5,10 @@ verify_ssl = true
 
 [dev-packages]
 
+
+
 [packages]
+
 flask = "*"
 sqlalchemy = "*"
 flask-sqlalchemy = "*"
@@ -19,6 +22,7 @@ cloudinary = "*"
 flask-admin = "*"
 flask-jwt-extended = "*"
 twilio = "*"
+
 
 [requires]
 python_version = "3.8"
