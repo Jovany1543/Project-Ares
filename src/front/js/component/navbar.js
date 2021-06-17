@@ -69,7 +69,7 @@ export const MyNavbar = props => {
 											id: ""
 										})
 									);
-									props.handleLogout();
+									actions.handleLogout();
 								}}>
 								Log out
 							</Nav.Link>
