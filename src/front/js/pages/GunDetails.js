@@ -83,10 +83,6 @@ export const GunDetails = props => {
 					<p>{gun.caliber}</p>
 				</Col>
 				<Col>
-					<h6>Firing Modes:</h6>
-					<p>{gun.guntype}</p>
-				</Col>
-				<Col>
 					<h6>Manufacturer:</h6>
 					<p>{gun.manufacturer}</p>
 				</Col>
