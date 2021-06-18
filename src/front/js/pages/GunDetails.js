@@ -52,7 +52,7 @@ export const GunDetails = props => {
 	};
 
 	useEffect(() => {
-		actions.getBookmarkData();
+		props.loggedIn ? actions.getBookmarkData(): "";
 	}, [bookmark]);
 
 	return gun == undefined ? (
