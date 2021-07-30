@@ -1,6 +1,9 @@
 
+This full stack web application serves as a knowledge center for those looking to learn about the world of firearms. This RESTful API allows the user to find information about firearms, their category, and what it takes to operate or own one. Use of React Router was made in order to improve the user's navigation when trying to locate a specific gun or browse by category. In the backend it makes use of Python, and Flask SQLAlchemy to manage a database that stores information about the firearms, the user and bookmarks. 
 
+For this program we used HTML5, CSS, Javascript, React Bootstrap, Python, Flask SQLAlchemy, and Heroku.
 
+Website preview:
 <a href="https://www.loom.com/share/20c3949b61fe4baabeb87c897a420782"><img src="https://media.giphy.com/media/th0rbxMguFicnMzT7M/giphy.gif" /></a>
 
 
