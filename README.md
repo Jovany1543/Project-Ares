@@ -4,6 +4,7 @@ This full stack web application serves as a knowledge center for those looking t
 For this program we used HTML5, CSS, Javascript, React Bootstrap, Python, Flask SQLAlchemy, and Heroku.
 
 Website preview:
+
 <a href="https://www.loom.com/share/20c3949b61fe4baabeb87c897a420782"><img src="https://media.giphy.com/media/th0rbxMguFicnMzT7M/giphy.gif" /></a>
 
 
