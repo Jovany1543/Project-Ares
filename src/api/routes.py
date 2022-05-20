@@ -6,14 +6,11 @@ from api.models import db, Gun, Activity, User, gun_activities, gun_bookmarks
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required,get_jwt_identity
 from sqlalchemy.sql import exists
-from twilio.rest import Client
+
 import os
 
-# Find your Account SID and Auth Token at twilio.com/console
-# and set the environment variables. See http://twil.io/secure
-account_sid = os.environ['TWILIO_ACCOUNT_SID']
-auth_token = os.environ['TWILIO_AUTH_TOKEN']
-client = Client(account_sid, auth_token)
+
+
 
 api = Blueprint('api', __name__)
 
@@ -53,12 +50,7 @@ def handle_signup():
 
     db.session.add(user)
     db.session.commit()
-    message = client.messages \
-                .create(
-                     body="Thank you for signing up with Guniverse! Your account was successfully created.",
-                     from_='+19703358326',
-                     to='+14079954145'
-                 )
+   
     payload = {
         'msg': 'Your account has been registered successfully.',
         'user': user.serialize()
