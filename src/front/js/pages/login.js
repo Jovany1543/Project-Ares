@@ -13,16 +13,22 @@ export const Login = props => {
 
 	let history = useHistory();
 
-	const [loginData, setLoginData] = useState({
-		email: "",
-		password: ""
-	});
 
 	const {
 		register,
 		handleSubmit,
 		formState: { errors }
 	} = useForm();
+	
+	const onSubmit = async data => {
+		try {
+			await login(data.email, data.password);
+			actions.getBookmarkData();
+		} catch (e) {
+			alert(e.message);
+		}
+		return false;
+	};
 
 	const login = (email, password) => {
 		console.log("variables", email, password);
@@ -72,22 +78,17 @@ export const Login = props => {
 				})
 			);
 	};
-
-	const onSubmit = async data => {
-		try {
-			await login(data.email, data.password);
-			actions.getBookmarkData();
-		} catch (e) {
-			alert(e.message);
-		}
-		return false;
-	};
-
-	const onChange = data => {
-		let aux = { ...loginData };
-		aux[data.name] = data.value;
-		setLoginData(aux);
-	};
+	
+// 	const [loginData, setLoginData] = useState({
+// 		email: "",
+// 		password: ""
+// 	});
+	
+// const onChange = data => {
+// 		let aux = { ...loginData };
+// 		aux[data.name] = data.value;
+// 		setLoginData(aux);
+// 	};
 
 	return (
 		<div className="container-fluid">
